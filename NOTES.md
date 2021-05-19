@@ -4,8 +4,8 @@ An admin user can create, edit and destroy lists. An admin user can crteate task
 
 Need: 
 
--Admin User (mom, boss)
--Child users (kids, employees)
+-Admin User (mom, boss) - email password username - admin? 
+-Child users (kids, employees) email password username - admin?
 
 -lists: 
     *title
@@ -15,5 +15,22 @@ Need:
     *status
     *assigned user
 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-User - 
+User -  has_many :lists 
+        has_many :tasks, through: :lists 
+
+List - has_many tasks
+       has_many :users, through :tasks 
+
+
+Task - belongs_to :user 
+       belongs_to :list
+
+
+
+    USE : 
+
+    devise - login/out/up
+    omniauth - fb login option
+    activestorage - add images to tasks or lists ?????

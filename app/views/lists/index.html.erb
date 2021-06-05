@@ -7,14 +7,14 @@
       <% end %>
     </ul>
     
-    <ul><h3>Here are all lists:</h3>
+    <ul><h3>Lists:</h3>
       <% @lists.each do |list| %>
         <input class="toggle-all" type="checkbox">
-        <label for="toggle-all">Completed?:</label>
+        <label for="toggle-all">Completed?</label>
         <ul><h4> <%= link_to list.name, list %></h4></ul>
       <% end %>
     </ul>
 <% else %>
-  <h2><ul> Welcome!</ul></h2>
+  <h2><ul> Welcome</ul></h2>
         <p> Please <%= link_to 'Sign In', new_user_session_path %> to continue. </p>
 <% end %>

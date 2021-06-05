@@ -1,0 +1,20 @@
+<% if user_signed_in? %> 
+  <h2><ul> Welcome, <%= current_user.email if !current_user.nil? %></ul></h2>
+    
+    <ul><%= form_for(@list) do |f| %>
+      <%= f.text_field :name, placeholder: 'i.e. Chores' %>
+      <%= f.submit %>
+      <% end %>
+    </ul>
+    
+    <ul><h3>Here are all lists:</h3>
+      <% @lists.each do |list| %>
+        <input class="toggle-all" type="checkbox">
+        <label for="toggle-all">Completed?:</label>
+        <ul><h4> <%= link_to list.name, list %></h4></ul>
+      <% end %>
+    </ul>
+<% else %>
+  <h2><ul> Welcome!</ul></h2>
+        <p> Please <%= link_to 'Sign In', new_user_session_path %> to continue. </p>
+<% end %>

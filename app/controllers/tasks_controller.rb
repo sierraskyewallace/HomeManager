@@ -3,16 +3,21 @@ class TasksController < ApplicationController
     def index
         @task = Task.all
       end
-    
+
+    def new 
+      @list = List.find_by_id(params[:id])
+      @task = @list.tasks.build
+    end
+
       def create
+        @list = List.find(params[:list_id])
         @task = @list.tasks.build(task_params)
         @task.save
-        redirect_to @list
+        redirect_to list_path(@list)
       end
       
       def edit
         @task.update(task_params)
-    
         redirect_to list_path(@task.list)
       end
     

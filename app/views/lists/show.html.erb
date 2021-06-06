@@ -1,8 +1,9 @@
 <div class="container">
 <h5><%= @list.name %></h5>
     <%= render @list.tasks %><br>
+    <p> Add task field here? </p>
 
-<%= button_to 'Add Task', tasks_path %><br><br>
+<%= link_to 'Add Task', new_task_path %><br><br>
 <%= link_to 'Edit List', edit_list_path %><br>
 <%= link_to 'Delete List', list_path(@list), method: :delete %><br>
 <%= link_to 'All Lists', lists_path %>

@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
 
-  resources :user_lists
-  resources :completed_tasks
-  resources :lists
-  resources :tasks
   root to: "sessions#home"
-  #devise_for :users
+
+  resources :lists do
+    resources :tasks
+  end
+  
   devise_for :users, :controllers => {omniauth_callbacks: "users/omniauth_callbacks" }
 
 

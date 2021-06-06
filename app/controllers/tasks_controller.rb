@@ -5,7 +5,7 @@ class TasksController < ApplicationController
       end
 
     def new 
-      @list = List.find_by_id(params[:id])
+      #@list = List.find_by_id(params[:id])
       @task = @list.tasks.build
     end
 
@@ -17,10 +17,16 @@ class TasksController < ApplicationController
       end
       
       def edit
-        @task.update(task_params)
-        redirect_to list_path(@task.list)
+        @list = List.find(params[:list_id])
+        @task = Task.find_by_id(params[:id])
       end
-    
+
+      def update 
+        @task.update(task_params)
+        @task.save 
+        redirect_to list_task_path
+      end
+
       def destroy
         @task.destroy
         redirect_to list_path(@task.list)
@@ -32,6 +38,6 @@ class TasksController < ApplicationController
         params.require(:task).permit(:name)
       end
       def set_task 
-        @task = Task.find_by(params[:id])
+        @task = Task.find_by_id(params[:id])
       end
     end

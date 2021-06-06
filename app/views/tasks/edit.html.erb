@@ -1,0 +1,5 @@
+<h5> Edit Task </h5>
+<p> <%= form_for([@list, @task]) do |f| %>
+    <%= f.text_field :name, placeholder: "Edit Task" %>
+    <%= f.submit 'Update' %><br>
+  <% end %> </p><br>

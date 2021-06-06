@@ -1,3 +1,10 @@
-welcome
+<% if user_signed_in? %>
+    <h3> Welcome, <%= current_user.email if !current_user.nil? %></h3><br>
 
-<%= button_to "Log in with Google", user_google_oauth2_omniauth_authorize_path, method: :post  %>
+    <%= link_to 'My Lists', lists_path %>
+
+    <% else %>
+
+    <h5> Welcome, please <%= link_to 'Sign in', new_user_session_path %> or <%= link_to 'Sign up', new_user_registration_path %> to continue. </h5>
+
+    <% end %>

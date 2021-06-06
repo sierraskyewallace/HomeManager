@@ -16,6 +16,5 @@
       <% end %>
     </ul>
 <% else %>
-  <h2><ul> Welcome</ul></h2>
-        <p> Please <%= link_to 'Sign In', new_user_session_path %> to continue. </p>
+<p> Welcome, please <%= link_to 'Sign in', new_user_session_path %> or <%= link_to 'Sign up', new_user_registration_path %> to continue. </p>
 <% end %>

@@ -35,6 +35,6 @@ class ListsController < ApplicationController
         params.require(:list).permit(:name, tasks_attributes: [:name, :completed])
       end
       def set_list 
-        @list = List.find_by(params[:id])
+        @list = List.find_by_id(params[:id])
       end
 end

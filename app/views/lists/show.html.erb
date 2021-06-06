@@ -1,5 +1,9 @@
 
 <%= @list.name %>
+<%= render @list.tasks %>
+<%= button_to 'Add Task', tasks_path %>
+<%= link_to 'Edit List', edit_list_path %>
+<%= link_to 'Delete List', list_path(@list), method: :delete %>
 
   
     

@@ -24,9 +24,9 @@ class ListsController < ApplicationController
       end
     
       def destroy
-        @task = Task.find_by(params[:id])
-        @task.destroy
-        redirect_to @list
+        #@list = List.find_by(params[:id])
+        @list.destroy
+        redirect_to lists_path
       end
     
       private

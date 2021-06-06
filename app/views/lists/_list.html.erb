@@ -1,10 +1,8 @@
+<div class="container">
 <%= form_for(@list) do |f| %>
-    <ul> <h4>List Name: <%= f.text_field :name, placeholder: "Create a List" %></h4>
-       <%= f.fields_for :tasks, @list.tasks do |task_field| %>
-         <h4>Task Name: <%= task_field.text_field :name, placeholder: "Create a Task" %></h4>
-       <% end %>
-       <h4><%= f.submit %></h4>
+ <p>List Name: <%= f.text_field :name, placeholder: "name" %></p><br>
+       <%= f.submit %>
      <% end %>
    </ul>
  </ul>
- 
+ </div>

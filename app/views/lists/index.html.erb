@@ -1,5 +1,5 @@
 <% if user_signed_in? %> 
-  <h2><ul> Welcome, <%= current_user.email if !current_user.nil? %></ul></h2>
+  <h4><ul> Welcome, <%= current_user.email if !current_user.nil? %></ul></h4>
     
     <ul><%= form_for(@list) do |f| %>
       <%= f.text_field :name, placeholder: 'i.e. Chores' %>
@@ -7,12 +7,9 @@
       <% end %>
     </ul>
     
-    <ul><h3>Lists:</h3>
+    <ul><h5>Lists:</h5>
       <% @lists.each do |list| %>
-        <h4> <%= link_to list.name, list_path(list) %></h4>
-        <input class="toggle-all" type="checkbox">
-        <label for="toggle-all">Completed?</label>
-        
+        <p> <%= link_to list.name, list_path(list) %></p>    
       <% end %>
     </ul>
 <% else %>

@@ -13,6 +13,13 @@ class ListsController < ApplicationController
         @list = List.new
         @list.tasks.build
       end
+      def edit  
+      end
+      def update 
+        @list.update(list_params)
+        @list.save 
+        redirect_to list_path(@list)
+      end
     
       def create
         @list = List.new(list_params)

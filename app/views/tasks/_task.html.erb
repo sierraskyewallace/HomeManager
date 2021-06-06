@@ -1,8 +1,4 @@
-<%= form_for(@task) do |f| %>
-         <%= f.text_field f.name %><br>
-         <%= f.collection_select(:list, :list_id, List.all, :id, :name) %>
-       <h4><%= f.submit %></h4>
-     <% end %>
-   </ul>
- </ul>
- 
+<ul><li><% @list.tasks.each do |task| %>
+       <%= task.name %> 
+       <%= link_to "Done", list_task_path(task.list, task), :method => "delete", :class => "destroy" %>
+  <% end %></li></ul>

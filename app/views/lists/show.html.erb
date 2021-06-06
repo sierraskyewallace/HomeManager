@@ -1,11 +1,11 @@
 
 <h5><%= @list.name %></h5>
-    <p> <%= form_for([@list, Task.new]) do |f| %>
+    <p> <%= form_for ([@list, @task]) do |f| %>
         <%= f.text_field :name, placeholder: "Add Task" %>
         <%= f. submit %><br>
       <% end %> </p><br>
 
-      <ul> <%= render @list.tasks %></ul>
+      <%= render @list.tasks %><br>
 
 <%= link_to 'Edit List', edit_list_path %><br>
 <%= link_to 'Delete List', list_path(@list), method: :delete %><br>

@@ -29,7 +29,7 @@ class TasksController < ApplicationController
       private
       
       def task_params
-        params.require(:task).permit(:name, :status)
+        params.require(:task).permit(:name)
       end
       def set_task 
         @task = Task.find_by(params[:id])

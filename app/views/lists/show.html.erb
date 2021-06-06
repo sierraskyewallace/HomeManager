@@ -5,7 +5,7 @@
         <%= f. submit %><br>
       <% end %> </p><br>
 
-      <%= render @list.tasks %><br>
+      <%= render '/tasks/task'%><br>
 
 <%= link_to 'Edit List', edit_list_path %><br>
 <%= link_to 'Delete List', list_path(@list), method: :delete %><br>

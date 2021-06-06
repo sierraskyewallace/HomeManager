@@ -16,6 +16,10 @@ class TasksController < ApplicationController
         redirect_to list_path(@list)
       end
       
+      def show 
+        @task = Task.find_by_id(params[:id])
+      end
+
       def edit
         @list = List.find(params[:list_id])
         @task = Task.find_by_id(params[:id])

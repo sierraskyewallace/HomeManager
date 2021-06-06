@@ -1,5 +1,8 @@
-<ul><li><% @list.tasks.each do |task| %>
-       <%= task.name %> 
-       <%= link_to 'Edit', list_task_path(@list) %>
-       <%= link_to "Done", list_task_path(task.list, task), :method => "delete", :class => "destroy" %>
-  <% end %></li></ul>
+
+<ul>
+<% @list.tasks.each do |t| %><br>
+       <%= t.name %><br>
+       <%= link_to "Edit", list_task_path(@list) %><br>
+       <%= link_to "Done", list_task_path(t.list, t), :method => "delete", :class => "destroy" %><Br>
+  <% end %><br>
+</ul>

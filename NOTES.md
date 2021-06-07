@@ -34,3 +34,15 @@ Task - belongs_to :user
     devise - login/out/up
     omniauth - fb login option
     activestorage - add images to tasks or lists ?????
+
+
+
+    Admin user 
+
+
+    Need to create parent and child accounts...like boss and employee
+
+    need to make sure ADMIN CAN ASSIGN TASKS to other users and those users can view their tasks
+
+    
+

@@ -10,6 +10,5 @@ Rails.application.routes.draw do
 
 
   
-  #atch '/auth/:provider/callback' => 'sessions#omniauth'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

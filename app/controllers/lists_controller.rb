@@ -16,12 +16,17 @@ class ListsController < ApplicationController
       end
 
       def edit  
+        @list = List.find_by_id(params[:id])
+        #@list = current_user.lists.update(update_params)
       end
 
       def update 
-        @list = current_user.lists.update(list_params)
-        @list.save 
+        @list = List.find_by_id(params[:id])
+        if @list.update(list_params)
         redirect_to list_path(@list)
+        else 
+          render :edit 
+        end
       end
     
       def create
@@ -34,16 +39,17 @@ class ListsController < ApplicationController
       end
     
       def destroy
-        #@list = List.find_by(params[:id])
         @list.destroy
         redirect_to lists_path
       end
     
       private
-    
+
+
       def list_params
         params.require(:list).permit(:name, tasks_attributes: [:name, :completed])
       end
+
       def set_list 
         @list = current_user.lists.find_by_id(params[:id])
       end

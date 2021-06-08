@@ -1,7 +1,7 @@
 class TasksController < ApplicationController
     before_action :set_task
     def index
-        @task = Task.all
+        @task = current_user.tasks
       end
 
     def new 

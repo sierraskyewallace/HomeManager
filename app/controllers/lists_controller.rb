@@ -1,11 +1,13 @@
 class ListsController < ApplicationController
     before_action :set_list
     def index
+      @lists = current_user.lists
         @list = List.new
-        @lists = List.all
+        #@lists = List.all
       end
     
       def show
+        @list = List.find_by(params[:list_id])
         @task = Task.new
       end
     
@@ -13,16 +15,18 @@ class ListsController < ApplicationController
         @list = List.new
         @list.tasks.build
       end
+
       def edit  
       end
+
       def update 
-        @list.update(list_params)
+        @list = current_user.lists.update(list_params)
         @list.save 
         redirect_to list_path(@list)
       end
     
       def create
-        @list = List.new(list_params)
+        @list = current_user.lists.new(list_params)
         if @list.save
           redirect_to @list
         else
@@ -42,6 +46,6 @@ class ListsController < ApplicationController
         params.require(:list).permit(:name, tasks_attributes: [:name, :completed])
       end
       def set_list 
-        @list = List.find_by_id(params[:id])
+        @list = current_user.lists.find_by_id(params[:list_id])
       end
 end

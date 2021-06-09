@@ -1,3 +1,4 @@
+
 <% if user_signed_in? %> 
   <h4><ul> Welcome, <%= current_user.email if !current_user.nil? %></ul></h4>
     
@@ -6,12 +7,19 @@
       <%= f.submit %>
       <% end %>
     </ul>
-    
-    <ul><h5>Lists:</h5>
-      <% @lists.each do |list| %>
-        <p> <%= link_to list.name, list_path(list) %></p>    
+    <div class="container">
+
+    <h5>Lists:</h5>
+    <ul class="list-group">
+    <% @lists.each do |list| %>
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+        <p> <%= link_to list.name, list_path(list) %></p> 
+        <span class="badge bg-primary rounded-pill"><%= list.tasks.size %></span>
       <% end %>
+      </li>
     </ul>
+
 <% else %>
 <p> Welcome, please <%= link_to 'Sign in', new_user_session_path %> or <%= link_to 'Sign up', new_user_registration_path %> to continue. </p>
 <% end %>
+</div>

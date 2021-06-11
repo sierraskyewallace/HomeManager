@@ -1,7 +1,6 @@
 <% if user_signed_in? %>
     <h3> Welcome, <%= current_user.email if !current_user.nil? %></h3><br>
-    <%= link_to 'Group Page', new_user_invitation_path %><br>
-
+<p> team index page here? </p>
     <%= link_to 'My Lists', lists_path %><br>
     <%= link_to 'Create a List', new_list_path %>
 

@@ -1,8 +1,7 @@
 
 <% if user_signed_in? %> 
   <h4><ul> Welcome, <%= current_user.email if !current_user.nil? %></ul></h4>
-  <%= link_to 'Group Page', user_invitation_path %>
-    
+<p> team index page link here? </p>    
     <ul><%= form_for(@list) do |f| %>
       <%= f.text_field :name, placeholder: 'i.e. Chores' %>
       <%= f.submit %>

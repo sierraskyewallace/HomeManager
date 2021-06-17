@@ -1,7 +1,6 @@
 class Task < ApplicationRecord
     belongs_to :list
-    #belongs_to :user
-    belongs_to :team
-    has_many :users, through: :teams
+    belongs_to :user
+ 
     validates :name, presence: true
 end

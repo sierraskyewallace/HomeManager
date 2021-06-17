@@ -16,7 +16,6 @@ ActiveRecord::Schema.define(version: 2021_06_05_203552) do
     t.string "name"
     t.integer "user_id"
     t.boolean "completed"
-    t.integer "team_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -30,7 +29,6 @@ ActiveRecord::Schema.define(version: 2021_06_05_203552) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.boolean "admin", default: false, null: false
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"

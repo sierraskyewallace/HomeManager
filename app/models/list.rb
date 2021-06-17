@@ -1,6 +1,6 @@
 class List < ApplicationRecord
   belongs_to :user 
-  belongs_to :task
+  has_many :tasks, through: :users
 
   validates :name, presence: true, uniqueness: true
 

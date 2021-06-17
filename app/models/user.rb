@@ -5,8 +5,8 @@ class User < ApplicationRecord
   devise  :database_authenticatable, :registerable,
           :rememberable, :validatable, :omniauthable, :omniauth_providers => [:google_oauth2]
 
-         belongs_to :team
-         has_many :tasks, through: :teams
+         has_many :lists 
+         has_many :tasks, through: :lists
          
          def self.from_omniauth(auth)
           where(provider: auth.provider, uid: auth.uid).first_or_create do |user|

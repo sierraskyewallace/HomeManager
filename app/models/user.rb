@@ -5,7 +5,8 @@ class User < ApplicationRecord
   devise  :database_authenticatable, :registerable,
           :rememberable, :validatable, :omniauthable, :omniauth_providers => [:google_oauth2]
 
-          
+          has_many :groups 
+          has_many :tasks
          #validates :email, presence: true
          
          def self.from_omniauth(auth)

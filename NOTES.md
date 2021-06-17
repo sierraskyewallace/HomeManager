@@ -1,48 +1,31 @@
 HomeManager - group task app 
 
-An admin user can create, edit and destroy lists. An admin user can crteate tasks for those lists and assign them to lower tier users as well as edit an delete the lists and tasks. Lower tier users can mark tasks as complete. 
+Admin user - can CRUD tasks (create, read, update, destroy)
 
-Need: 
+child user - can read task and destroy(complete)
 
--Admin User (mom, boss) - email password username - admin? 
--Child users (kids, employees) email password username - admin?
+User - devise and omniauth 
+        admin boolean ? (figure how to add that with omniauth)
 
--lists: 
-    *title
-
--tasks: 
-    *title
-    *status
-    *assigned user
-
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-User -  has_many :lists 
-        has_many :tasks, through: :lists 
-
-List - has_many tasks
-       has_many :users, through :tasks 
+        has many :tasks 
 
 
-Task - belongs_to :user 
-       belongs_to :list
+Task - name 
+        completed status
+        user id
+        belongs to :user 
 
+UserTask - join table? ^ above may be enough
 
+Groups - user id 
+        has many :users
 
-    USE : 
+        (some group of users that admin can see to assign tasks to)
 
-    devise - login/out/up
-    omniauth - fb login option
-    activestorage - add images to tasks or lists ?????
+USER STORY:
 
-
-
-    Admin user 
-
-
-    Need to create parent and child accounts...like boss and employee
-
-    need to make sure ADMIN CAN ASSIGN TASKS to other users and those users can view their tasks
+Admin user can full CRUD tasks and assignt hem to child users
+A child usrr can view tasks assigned to them only and update their status to complete(update or destroy)
 
     
 

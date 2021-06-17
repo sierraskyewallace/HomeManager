@@ -27,8 +27,8 @@ gem 'devise'
 gem 'omniauth'
 gem 'dotenv-rails'
 #gem 'pundit'
-gem 'devise_invitable'
-gem 'cancancan'
+#gem 'devise_invitable'
+#gem 'cancancan'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'

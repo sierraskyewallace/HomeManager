@@ -3,7 +3,7 @@
   <tbody>
     <% @groups.each do |g| %>
       <tr>
-        <td><%= g.name %></td>
+        <td><%= link_to g.name, group_path %></td>
         <td><%= link_to 'Show', g %></td>
         <td><%= link_to 'Edit', edit_group_path(g) %></td>
         <td><%= link_to 'Destroy', g, method: :delete %></td>

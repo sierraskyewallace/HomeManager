@@ -1,9 +1,10 @@
 <% if user_signed_in? %>
     <h3> Welcome, <%= current_user.email if !current_user.nil? %></h3><br>
-<p> team index page here? </p>
+
     <%= link_to 'My Tasks', tasks_path %><br>
     <%= link_to 'New Task', new_task_path %><br>
-    <%= link_to 'Invite User', new_user_invitation_path %><br>
+     
+    <%= link_to 'My Groups', groups_path %>
     <% else %>
 
     <h5> Welcome, please <%= link_to 'Sign in', new_user_session_path %> or <%= link_to 'Sign up', new_user_registration_path %> to continue. </h5>

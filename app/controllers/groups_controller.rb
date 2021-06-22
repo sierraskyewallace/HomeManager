@@ -1,5 +1,6 @@
 class GroupsController < ApplicationController
     def index
+        @user = User.all
         @groups = Group.all
       end
 
@@ -7,6 +8,7 @@ class GroupsController < ApplicationController
       end
  
       def new
+        @group = Group.users
         @group = current_user.groups.build
         @user = current_user
       end
@@ -17,13 +19,13 @@ class GroupsController < ApplicationController
       def create
         @group = current_user.groups.build(group_params)
         @group.users << current_user
-
           if @group.save
                 redirect_to root_path
           else 
             render :new 
           end
         end
+
 
         def update
             if @group.update(group_params)
@@ -32,7 +34,6 @@ class GroupsController < ApplicationController
                 render :edit
               end
             end
-          end
 
           def destroy
             @group.destroy
@@ -50,5 +51,4 @@ class GroupsController < ApplicationController
             def group_params
               params.require(:group).permit(:name, users_attributes: [:id, :first_name, :email, :_destroy])
             end
-        end
-    end
+          end

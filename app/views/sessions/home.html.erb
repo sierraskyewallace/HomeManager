@@ -1,8 +1,8 @@
 <% if user_signed_in? %>
     <h3> Welcome, <%= current_user.email if !current_user.nil? %></h3><br>
 <p> team index page here? </p>
-    <%= link_to 'My Lists', lists_path %><br>
-    <%= link_to 'Create a List', new_list_path %>
+    <%= link_to 'My Tasks', tasks_path %><br>
+    <%= link_to 'New Task', new_task_path %>
 
     <% else %>
 

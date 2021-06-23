@@ -1,2 +1,9 @@
 <h1> group show page </h1>
-<p> invite users feature </p>
+
+<% @group.users.each do |u| %>
+    <% u.email %>
+    <% u.invitation_accepted_at %>
+    <% end %>
+
+
+<%= link_to 'Invite User', new_user_invitation_path %>  <br>

@@ -8,7 +8,7 @@ class GroupsController < ApplicationController
       end
  
       def new
-        @group = Group.users
+        #@group = Group.users
         @group = current_user.groups.build
         @user = current_user
       end

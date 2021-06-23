@@ -1,6 +1,5 @@
 class Users::InvitationsController < Devise::InvitationsController
 
-   
 
     def new
         @group = Group.find_by_id(params[:group_id])
@@ -16,8 +15,10 @@ class Users::InvitationsController < Devise::InvitationsController
         
       end
 
-   
+    
+
       private
+
   def group_user_params
     params.require(:user).permit(:email,
       group_users_attributes: [:group_id])

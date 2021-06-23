@@ -1,7 +1,7 @@
 class GroupsController < ApplicationController
     def index
         @user = User.all
-        @groups = Group.all
+        @groups = current_user.groups
       end
 
       def show
@@ -37,8 +37,9 @@ class GroupsController < ApplicationController
             end
 
           def destroy
+            @group = Group.find_by_id(params[:id])
             @group.destroy
-            redirect_to root_path
+            redirect_to groups_path
             end
 
         

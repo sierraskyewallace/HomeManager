@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :invites
+ #resources :user_groups 
   root to: "sessions#home"
   
   

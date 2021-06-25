@@ -1,13 +1,12 @@
 Rails.application.routes.draw do
-
-  
-  resources :tasks
-  resources :groups do
-    devise_for :users, :controllers => { invitations: 'users/invitations' }
-end
   root to: "sessions#home"
+  
+  
+  resources :groups 
+  resources :tasks
 
-  devise_for :users, :controllers => {omniauth_callbacks: "users/omniauth_callbacks" }
+  devise_for :users, :controllers => {omniauth_callbacks: "users/omniauth_callbacks" }  
+    
 
 
 

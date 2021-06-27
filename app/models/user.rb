@@ -4,7 +4,8 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable, :recoverable,
   devise  :database_authenticatable, :registerable, 
           :rememberable, :validatable, :omniauthable, :omniauth_providers => [:google_oauth2]
-
+          
+          has_many :user_groups
           has_many :groups, through: :user_groups
           has_many :tasks
           has_many :invitations, :class_name => "Invite", :foreign_key => 'recipient_id'

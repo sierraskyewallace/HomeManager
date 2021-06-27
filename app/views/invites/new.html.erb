@@ -4,3 +4,7 @@
     <%= f.email_field :email %>
     <%= f.submit 'Send' %>
 <% end %>
+
+<% if @token != nil %>
+    <%= hidden_field_tag :invite_token, @token %>
+<% end %>

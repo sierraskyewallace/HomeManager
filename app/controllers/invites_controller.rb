@@ -1,11 +1,34 @@
 class InvitesController < ApplicationController
+    before_action :generate_token
+    before_action :check_user_existence
+
+ def check_user_existence
+    recipient = User.find_by_email(email)
+   if recipient
+      self.recipient_id = recipient.id
+   end
+ end
+
+def generate_token
+   self.token = Digest::SHA1.hexdigest([self.user_group_id, Time.now, rand].join)
+end
+
+def new
+    @token = params[:invite_token] 
+ end
    
-    def create
-        @invite = Invite.new(invite_params) 
-        @invite.sender_id = current_user.id 
-        if @invite.save
-           InviteMailer.new_user_invite(@invite, new_user_registration_path(:invite_token => @invite.token)).deliver #send the invite data to our mailer to deliver the email
-        else
-            #something
-        end
+ def create
+  @invite = Invite.new(invite_params)
+  @invite.sender_id = current_user.id
+  if @invite.save
+    if @invite.recipient != nil 
+       InviteMailer.existing_user_invite(@invite).deliver 
+       @invite.recipient.user_groups.push(@invite.user_group)
+    else
+       InviteMailer.new_user_invite(@invite, new_user_registration_path(:invite_token => @invite.token)).deliver
+    end
+  else
+     flash[:error] = "Invite failed" #think of better message
+  end
+end
 end

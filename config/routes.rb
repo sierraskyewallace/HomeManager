@@ -3,9 +3,11 @@ Rails.application.routes.draw do
  #resources :user_groups 
   root to: "sessions#home"
   
-  
   resources :groups 
+  resources :users do
   resources :tasks
+  end
+
 
   devise_for :users, :controllers => {omniauth_callbacks: "users/omniauth_callbacks" }  
     

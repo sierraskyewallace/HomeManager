@@ -1,19 +1,9 @@
 class InvitesController < ApplicationController
-    before_action :generate_token
+    #before_action :generate_token
     before_action :check_user_existence
 
- def check_user_existence
-    recipient = User.find_by_email(email)
-   if recipient
-      self.recipient_id = recipient.id
-   end
- end
-
-def generate_token
-   self.token = Digest::SHA1.hexdigest([self.user_group_id, Time.now, rand].join)
-end
-
 def new
+   @invite = Invite.new
     @token = params[:invite_token] 
  end
    
@@ -31,4 +21,19 @@ def new
      flash[:error] = "Invite failed" #think of better message
   end
 end
+
+private 
+
+def check_user_existence
+    recipient = User.find_by_email(params[:email])
+   if recipient
+      self.recipient_id = recipient.id
+   end
+ end
+
+
+
+    def invite_params
+        params.require(:invite).permit(:email)
+    end
 end

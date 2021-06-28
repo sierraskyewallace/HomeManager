@@ -1,5 +1,5 @@
 class InvitesController < ApplicationController
-    #before_action :generate_token
+    before_action :generate_token
     before_action :check_user_existence
 
 def new
@@ -31,7 +31,7 @@ def check_user_existence
    end
  end
 
-
+ 
 
     def invite_params
         params.require(:invite).permit(:email)

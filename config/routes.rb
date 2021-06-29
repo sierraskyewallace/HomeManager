@@ -4,9 +4,9 @@ Rails.application.routes.draw do
   root to: "sessions#home"
   
   resources :groups 
-  resources :users do
+  #resources :users
   resources :tasks
-  end
+
 
 
   devise_for :users, :controllers => {omniauth_callbacks: "users/omniauth_callbacks" }  

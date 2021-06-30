@@ -10,21 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_25_212549) do
+ActiveRecord::Schema.define(version: 2021_06_17_210257) do
 
   create_table "groups", force: :cascade do |t|
     t.string "name"
     t.integer "user_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "invites", force: :cascade do |t|
-    t.string "email"
-    t.integer "group_id"
-    t.integer "sender_id"
-    t.integer "recipient_id"
-    t.string "token"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

@@ -1,10 +1,11 @@
 Rails.application.routes.draw do
-  resources :invites
- #resources :user_groups 
   root to: "sessions#home"
+
+  resources :invites, controller: 'invitation/invites', only: [:new, :create]
+  
   
   resources :groups 
-  #resources :users
+
   resources :tasks
 
 

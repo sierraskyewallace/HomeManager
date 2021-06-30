@@ -1,13 +1,16 @@
 class InvitesController < ApplicationController
 
-
+   def index 
+      @invite = Group.invites.all 
+   end
 def new
-   @invite = Invite.new
+   @group = Group.find_by_id(params[:id])
+   @invite = Group.invites.build
     @token = params[:invite_token] 
  end
    
  def create
-   @invite = Invite.new(invite_params)
+   @invite = Group.invites.build(invite_params)
    @invite.sender_id = current_user.id
    if @invite.save
      if @invite.recipient != nil 
@@ -28,6 +31,6 @@ private
 
 
     def invite_params
-      params.require(:invite).permit(:group_id, :email)
+      params.permit(:email, :group_id, :sender_id, :recipient_id, :token)
     end
 end

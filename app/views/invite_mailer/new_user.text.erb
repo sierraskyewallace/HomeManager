@@ -4,6 +4,6 @@
       sender: @invite.sender.email, invitable: @invite.invitable.invitable_name, url: root_url) %>
 
 <%= t('invitation.invite_mailer.new_user.accept') %>:
-<%= @user_registration_url %>
+<%= new_user_registration_url %>
 
 <%= t('invitation.invite_mailer.new_user.ignore') %>

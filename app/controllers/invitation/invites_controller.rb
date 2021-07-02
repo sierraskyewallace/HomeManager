@@ -55,6 +55,7 @@ module Invitation
       end
     end
 
+
     private
 
     # Override this if you want to do something more complicated for existing users.

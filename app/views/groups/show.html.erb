@@ -8,4 +8,4 @@
 <p> add remove user feature next to each user </p>
 
 <%= link_to 'Invite User', 
-              new_invite_path(invite: { invitable_id: @group.id, invitable_type: 'Group' } ) %>
+              new_group_invite_path(@group) %>

@@ -24,6 +24,7 @@ module Invitation
     #   invite: { invitable_id, invitable_type, email or emails:[] }
     #
     def create
+      @group = Group.find_by_id(params[:group_id])
       failures = []
       invites = InviteForm.new(invite_params).build_invites(current_user)
       ActiveRecord::Base.transaction do

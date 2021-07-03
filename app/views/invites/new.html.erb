@@ -2,8 +2,8 @@
 
   
 
-  <%= form_for [@invite], url: group_invites_path do |f| %>
-      <%= f.hidden_field :group_id, value: @group %>
+  <%= form_for @invite, url: group_invites_path(@group) do |f| %>
+      <%= f.hidden_field :group_id, value: @group.id %>
       <%= f.hidden_field :invitable_id, value: @invite.invitable_id %>
       <%= f.hidden_field :invitable_type, value: @invite.invitable_type %>
       <%= f.label :email %>

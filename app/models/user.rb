@@ -7,8 +7,9 @@ class User < ApplicationRecord
   devise  :database_authenticatable, :registerable, 
           :rememberable, :validatable, :omniauthable, :omniauth_providers => [:google_oauth2]
           
-          has_many :groups
-          has_many :tasks, through: :groups
+          has_many :group_members
+          has_many :groups, through: :group_members
+
           has_many :invitations, :class_name => "Invite", :foreign_key => 'recipient_id'
           has_many :sent_invites, :class_name => "Invite", :foreign_key => 'sender_id'
          #validates :email, presence: true

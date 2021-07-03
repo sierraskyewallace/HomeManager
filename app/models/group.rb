@@ -1,8 +1,8 @@
 class Group < ApplicationRecord
     invitable named_by: :name
 
-    has_many :users
-    has_many :tasks, through: :users
-    belongs_to :user
- 
+    has_many :group_members
+    has_many :users, through: :group_members
+    belongs_to :user 
+    #accepts_nested_attributes :users
 end

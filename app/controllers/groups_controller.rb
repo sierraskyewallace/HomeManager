@@ -1,6 +1,7 @@
 class GroupsController < ApplicationController
     def index
         @user = User.all
+        @groups = Group.all
         @groups = current_user.groups
       end
 
@@ -9,7 +10,6 @@ class GroupsController < ApplicationController
           end
  
       def new
-        #@group = Group.users
         @group = current_user.groups.build
         @user = current_user
       end

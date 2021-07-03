@@ -7,4 +7,15 @@
 
 <p> add remove user feature next to each user </p>
 
-<%= link_to 'Invite User', new_group_invite_path(@group, invite: { invitable_id: @group.id, invitable_type: 'Group' } ) %>
+<!--- <%= link_to 'Invite User', new_group_group_member_path(@group, invite: { invitable_id: @group.id, invitable_type: 'Group' } ) %> --->
+
+<% if current_user.id != @user.id %>
+    <div class='invite-wrapper'>
+        <%= form_with(url: 'groups/:id/group_members/new', method: 'post') do |form| %>
+            <%= form.hidden_field :user_id, value: @user.id %>
+            
+            <br>
+            <%= form.submit "Invite", class: 'button' %>
+        <% end %>
+    </div>
+<% end %>

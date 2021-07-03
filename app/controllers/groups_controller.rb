@@ -6,6 +6,7 @@ class GroupsController < ApplicationController
       end
 
       def show
+        @user = User.find_by_id(params[:id])
         @group = Group.find_by_id(params[:id])
           end
  
@@ -18,8 +19,9 @@ class GroupsController < ApplicationController
       end
     
       def create
+        @group = Group.find_by_id(params[:id])
         @group = current_user.groups.build(group_params)
-        @group.users << current_user
+        #@group.users << current_user
           if @group.save
                 redirect_to @group
           else 

@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
-  resources :group_members
+  
   root to: "sessions#home"
 
   resources :groups do
-  resources :invites, controller: 'invitation/invites', only: [:new, :create]
+    resources :group_members
   end
   
   

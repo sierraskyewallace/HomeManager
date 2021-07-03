@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  include Invitation::User
+
 
   
   # Include default devise modules. Others available are:
@@ -10,8 +10,7 @@ class User < ApplicationRecord
           has_many :group_members
           has_many :groups, through: :group_members
 
-          has_many :invitations, :class_name => "Invite", :foreign_key => 'recipient_id'
-          has_many :sent_invites, :class_name => "Invite", :foreign_key => 'sender_id'
+       
          #validates :email, presence: true
          
          def self.from_omniauth(auth)

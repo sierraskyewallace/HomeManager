@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 2021_07_03_202314) do
 
   create_table "groups", force: :cascade do |t|
     t.string "name"
-    t.integer "user_id"
+    t.integer "owner_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 2021_07_03_202314) do
   end
 
   create_table "users", force: :cascade do |t|
+    t.boolean "admin", default: false
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "first_name"

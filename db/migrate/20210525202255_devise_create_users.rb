@@ -3,7 +3,7 @@
 class DeviseCreateUsers < ActiveRecord::Migration[6.1]
   def change
     create_table :users do |t|
-      #t.boolean :admin, null: false, default: false
+      t.boolean :admin, default: false 
       ## Database authenticatable
       t.string :email,              null: false, default: ""
       t.string :encrypted_password, null: false, default: ""
@@ -12,7 +12,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.1]
       ## Recoverable
       t.string   :reset_password_token
       t.datetime :reset_password_sent_at
-
+      
       ## Rememberable
       t.datetime :remember_created_at
 

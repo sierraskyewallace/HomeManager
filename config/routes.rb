@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     resources :group_members
   end
   
-  
+  resource :account, only: [:edit, :update]
   resources :tasks #move under users?
 
   

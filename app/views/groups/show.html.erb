@@ -5,17 +5,17 @@
     <% u.email %>
     <% end %>
 
-<p> add remove user feature next to each user </p>
+<p> add remove user feature next to each user and group member status? </p>
 
-<!--- <%= link_to 'Invite User', new_group_group_member_path(@group, invite: { invitable_id: @group.id, invitable_type: 'Group' } ) %> --->
 
-<% if current_user.id != @user.id %>
+
+<% if @group.owner %>
     <div class='invite-wrapper'>
-        <%= form_with(url: 'groups/:id/group_members/new', method: 'post') do |form| %>
-            <%= form.hidden_field :user_id, value: @user.id %>
-            
+        <%= form_with(url: 'groups/:id/group_members/new', method: 'post') do |f| %>
+            <%= f.hidden_field :user_id, value: @user.id %>
+            <%= f.email_field :email, value: @user.email %>
             <br>
-            <%= form.submit "Invite", class: 'button' %>
+            <%= f.submit "Invite", class: 'button' %>
         <% end %>
     </div>
 <% end %>

@@ -6,6 +6,8 @@ class Group < ApplicationRecord
 
     accepts_nested_attributes_for :users
 
+    validates :name, presence: true
+
     def accepted 
         Invite.accepted == true 
     end

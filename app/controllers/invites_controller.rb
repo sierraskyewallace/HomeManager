@@ -1,5 +1,6 @@
 class InvitesController < ApplicationController 
     def create
+        @group = Group.find_by_id(params[:group_id])
         @invite = Invite.new(invite_params)
         @invite.sender_id = current_user.id
         if @invite.save
@@ -23,6 +24,6 @@ class InvitesController < ApplicationController
      private 
 
      def invite_params 
-      params.require(:invite).permit!
+      params.require(:invite).permit(:email, :group_id)
      end
 end 

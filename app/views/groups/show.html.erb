@@ -2,9 +2,10 @@
 
 <%= @group.name %> <br>
 
-<% @group.users.each do |g| %>
-    <%= g.email %>
-    <% end %><br>
+<ul><% @group.users.each do |g| %>
+    <%= g.email %><br>
+    <% end %>
+    </ul><br>
 
 <p> add remove user feature next to each user and group member status? </p>
 

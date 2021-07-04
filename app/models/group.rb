@@ -7,7 +7,7 @@ class Group < ApplicationRecord
 
     
 
-    accepts_nested_attributes_for :users
+    accepts_nested_attributes_for :users, :invites
 
     validates :name, presence: true
 

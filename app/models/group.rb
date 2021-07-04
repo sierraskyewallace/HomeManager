@@ -15,8 +15,4 @@ class Group < ApplicationRecord
     def accepted 
         Invite.accepted == true 
     end
-
-    #def owner?
-        #Group.admin?
-   # end
 end

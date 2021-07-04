@@ -6,10 +6,9 @@ Rails.application.routes.draw do
     resources :invites, controller: 'invitation/invites', only: [:new, :create]
       end
  
-
-  
-
-  resources :tasks #move under users?
+  resources :users do 
+    resources :tasks 
+  end
 
   
 

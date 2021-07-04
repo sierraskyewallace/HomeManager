@@ -1,9 +1,12 @@
 class TasksController < ApplicationController
     def index
+        @user = User.all
         @tasks = current_user.tasks
       end
     
       def show
+        @user = User.find_by_id(params[:id])
+        @task = Task.find_by_id(params[:id])
       end
     
       def new

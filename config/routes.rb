@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   
   root to: "sessions#home"
 
-  resources :groups do
+  resources :groups do 
       resources :invites, only: [:new, :create] 
       end
  

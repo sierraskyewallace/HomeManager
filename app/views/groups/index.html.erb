@@ -1,14 +1,12 @@
-<h1>groups</h1>
+<h1>My Groups</h1>
 
 
-    <% current_user.groups.each do |g| %>
-
+  <ul>  <% @groups.each do |g| %>
         <%= link_to g.name, group_path(g) %>
         <%= link_to 'Edit', edit_group_path(g) %>
         <%= link_to 'Destroy', g, method: :delete %>
- 
 <% end %>
-
+</ul>
 <br>
 <br>
 

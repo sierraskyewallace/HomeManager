@@ -2,10 +2,6 @@
 class InviteMailer < ActionMailer::Base
   default from: 'reply@example.com'
 
-
-
-
-
   def existing_user(invite)
     @invite = invite
     mail(

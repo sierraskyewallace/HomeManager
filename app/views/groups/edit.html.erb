@@ -1,4 +1,9 @@
-<p> edit group </p>
+<p> Edit <%= @group.name %> </p>
 
-<%= render 'group' %>
+<%= form_for(@group) do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name %> <br>
+    <br>
+    <%= f.submit %>
+    <% end %>
 

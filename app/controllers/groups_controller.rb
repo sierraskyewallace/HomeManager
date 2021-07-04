@@ -1,5 +1,5 @@
 class GroupsController < ApplicationController
-  before_action :owner?, only: [:new, :create, :update, :edit, :destroy]
+  before_action :owner, only: [:new, :create, :update, :edit, :destroy]
     def index
         @user = User.all
         @groups = Group.all
@@ -17,6 +17,7 @@ class GroupsController < ApplicationController
       end
 
       def edit
+        @group = Group.find_by_id(params[:id])
       end
     
       def create
@@ -32,6 +33,7 @@ class GroupsController < ApplicationController
 
 
         def update
+          @group = Group.find_by_id(params[:id])
             if @group.update(group_params)
                 redirect_to @group
               else
@@ -52,8 +54,8 @@ class GroupsController < ApplicationController
               @group = Group.find(params[:id])
             end
             
-            def owner?
-              current_user.admin?
+            def owner
+              current_user.admin? == true
             end
         
             

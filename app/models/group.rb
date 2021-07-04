@@ -1,4 +1,5 @@
 class Group < ApplicationRecord
+    include CanCan::Ability
     invitable named_by: :name
     
     has_many :group_members
@@ -15,11 +16,7 @@ class Group < ApplicationRecord
         Invite.accepted == true 
     end
 
-    private 
-
-    
-
-    def owner?
-     current_user.id == owner.id
-    end
+    #def owner?
+        #Group.admin?
+   # end
 end

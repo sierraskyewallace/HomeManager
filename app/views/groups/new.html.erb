@@ -1,4 +1,13 @@
-<h1> new group form </h1>
+<h1> New Group </h1><br>
 
+<%= form_for(@group) do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name %> <br>
+    <%= f.label :owner? %>
+    <%= f.check_box :owner %>
+    <br>
+    <%= f.submit %>
+    <% end %>
 
-<%= render 'group' %>
+    <%= f.check_box :owner %>
+

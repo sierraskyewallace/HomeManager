@@ -1,17 +1,20 @@
-<h1> group show page </h1>
+<h1> <%= @group.name %>  </h1>
 
-<%= @group.name %> <br>
+
 
 <ul><% @group.users.each do |g| %>
-    <%= g.email %><br>
+    <li><%= g.email %></li><br>
     <% end %>
     </ul><br>
 
-<p> add remove user feature next to each user and group member status? </p>
+
 
 
 
 <% if @group.owner %>
 <%= link_to 'Invite User', 
-new_group_invite_path(@group, invite: { invitable_id: @group.id, invitable_type: 'Group' } ) %>
+new_group_invite_path(@group, invite: { invitable_id: @group.id, invitable_type: 'Group' } ) %><br>
+<%= link_to 'Edit Group', edit_group_path(@group) %><br>
+<%= link_to 'Delete Group', group_path(@group), method: :delete %><br>
+<%= link_to 'Back', groups_path %>
 <% end %>

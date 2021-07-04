@@ -6,7 +6,13 @@ class Group < ApplicationRecord
 
     accepts_nested_attributes_for :users
 
+    def accepted 
+        Invite.accepted == true 
+    end
+
     private 
+
+    
 
     def owner?
      current_user.id == owner.id

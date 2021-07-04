@@ -12,7 +12,9 @@ def generate_token
    self.token = Digest::SHA1.hexdigest([self.group_id, Time.now, rand].join)
 end
 
-
+def accepted 
+    Invite.accepted == true 
+end
 
 def check_user_existence
    recipient = User.find_by_email(email)

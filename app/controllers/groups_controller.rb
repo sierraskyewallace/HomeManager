@@ -7,7 +7,7 @@ class GroupsController < ApplicationController
       end
 
       def show
-        @user = User.find_by_id(params[:id])
+        @user = User.all
         @group = Group.find_by_id(params[:id])
           end
  

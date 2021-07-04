@@ -1,9 +1,9 @@
 <h1> group show page </h1>
 
 <%= @group.name %> <br>
-<% @group.users.each do |u| %>
-    <% u.email %>
-    <% u.status %>
+
+<% @group.users.each do |g| %>
+    <%= g.email %>
     <% end %>
 
 <p> add remove user feature next to each user and group member status? </p>

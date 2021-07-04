@@ -4,5 +4,5 @@ class GroupMember < ApplicationRecord
 
     enum role: [:general, :admin]
 
-    has_many :invites
+    #has_many :invites
 end

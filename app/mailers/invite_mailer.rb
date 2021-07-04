@@ -1,7 +1,5 @@
 # Send invitations to new and existing users.
 class InviteMailer < ActionMailer::Base
-  default from: 'reply@example.com'
-
   def existing_user(invite)
     @invite = invite
     mail(
@@ -20,5 +18,4 @@ class InviteMailer < ActionMailer::Base
       subject: I18n.t('invitation.invite_mailer.new_user.subject')
     )
   end
-
 end

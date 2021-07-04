@@ -11,5 +11,6 @@
 
 
 <% if @group.owner %>
-    <%= link_to 'Invite User', new_group_invite_path(@group) %>
+<%= link_to 'Invite User', 
+new_group_invite_path(@group, invite: { invitable_id: @group.id, invitable_type: 'Group' } ) %>
 <% end %>

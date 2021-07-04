@@ -27,7 +27,7 @@ gem 'devise'
 gem 'omniauth'
 gem 'dotenv-rails'
 #gem 'pundit'
-#gem 'invitation'
+gem 'invitation'
 gem 'cancan'
 
 # Use Active Storage variant

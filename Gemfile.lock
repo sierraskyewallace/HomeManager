@@ -110,6 +110,8 @@ GEM
     hashie (4.1.0)
     i18n (1.8.10)
       concurrent-ruby (~> 1.0)
+    invitation (0.6.1)
+      rails (>= 4.0)
     jbuilder (2.11.2)
       activesupport (>= 5.0.0)
     jwt (2.2.3)
@@ -270,6 +272,7 @@ DEPENDENCIES
   capybara (>= 3.26)
   devise
   dotenv-rails
+  invitation
   jbuilder (~> 2.7)
   letter_opener
   listen (~> 3.3)

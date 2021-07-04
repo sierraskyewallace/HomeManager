@@ -9,7 +9,7 @@ class GroupsController < ApplicationController
       def show
         @user = User.all
         @group = Group.find_by_id(params[:id])
-          end
+      end
  
       def new
         @group = current_user.groups.build

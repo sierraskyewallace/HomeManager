@@ -1,4 +1,7 @@
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
+  include Invitation::UserRegistration
+  before_action :set_invite_token, only: [:new]
+  after_action :process_invite_token, only: [:create]
   skip_before_action :verify_authenticity_token
   
   def google_oauth2
@@ -9,4 +12,6 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       redirect_to new_user_registration_url
     end
   end
+
+
 end

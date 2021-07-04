@@ -1,7 +1,7 @@
 # Send invitations to new and existing users.
 class InviteMailer < ActionMailer::Base
   default from: 'reply@example.com'
-  #before_action :mailer_set_url_options
+
 
 
 
@@ -25,9 +25,4 @@ class InviteMailer < ActionMailer::Base
     )
   end
 
-#private 
-
-#def mailer_set_url_options
-  #ActionMailer::Base.default_url_options = { host: 'local', port:3000 }
-#end
 end

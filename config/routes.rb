@@ -3,10 +3,12 @@ Rails.application.routes.draw do
   root to: "sessions#home"
 
   resources :groups do
-    resources :group_members
-  end
+      resources :invites, only: [:new, :create] 
+      end
+ 
+
   
-  resource :account, only: [:edit, :update]
+
   resources :tasks #move under users?
 
   

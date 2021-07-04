@@ -3,6 +3,7 @@
 <%= @group.name %> <br>
 <% @group.users.each do |u| %>
     <% u.email %>
+    <% u.status %>
     <% end %>
 
 <p> add remove user feature next to each user and group member status? </p>
@@ -10,12 +11,5 @@
 
 
 <% if @group.owner %>
-    <div class='invite-wrapper'>
-        <%= form_with(url: 'groups/:id/group_members/new', method: 'post') do |f| %>
-            <%= f.hidden_field :user_id, value: @user.id %>
-            <%= f.email_field :email, value: @user.email %>
-            <br>
-            <%= f.submit "Invite", class: 'button' %>
-        <% end %>
-    </div>
+    <%= link_to 'Invite User', new_group_invite_path(@group) %>
 <% end %>

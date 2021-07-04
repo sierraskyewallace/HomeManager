@@ -1,16 +1,14 @@
 <h1>groups</h1>
 
-  <tbody>
-    <% @groups.each do |g| %>
-      <tr>
-        <td><%= link_to g.name, group_path(g) %></td>
-        <td><%= link_to 'Show', g %></td>
-        <td><%= link_to 'Edit', edit_group_path(g) %></td>
-        <td><%= link_to 'Destroy', g, method: :delete %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+
+    <% current_user.groups.each do |g| %>
+
+        <%= link_to g.name, group_path(g) %>
+        <%= link_to 'Edit', edit_group_path(g) %>
+        <%= link_to 'Destroy', g, method: :delete %>
+ 
+<% end %>
+
 <br>
 <br>
 

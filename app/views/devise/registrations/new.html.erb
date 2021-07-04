@@ -8,6 +8,9 @@
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
 
+  <% if @token != nil %>
+  <%= hidden_field_tag :invite_token, @token %>
+<% end %>
     
   <div class="field">
     <%= f.label :password %>

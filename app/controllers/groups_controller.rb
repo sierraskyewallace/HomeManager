@@ -1,5 +1,5 @@
 class GroupsController < ApplicationController
-  before_action :owner, only: [:new, :create, :update, :edit, :destroy]
+  before_action :owner?, only: [:new, :create, :update, :edit, :destroy]
     def index
         @user = User.all
         @groups = Group.all
@@ -22,7 +22,7 @@ class GroupsController < ApplicationController
       def create
         @group = Group.find_by_id(params[:id])
         @group = current_user.groups.build(group_params)
-        #@group.users << current_user
+        @group.users << current_user
           if @group.save
                 redirect_to @group
           else 
@@ -53,7 +53,7 @@ class GroupsController < ApplicationController
             end
             
             def owner?
-              current_user.id == owner_id
+              current_user.admin?
             end
         
             

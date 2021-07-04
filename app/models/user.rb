@@ -10,7 +10,9 @@ class User < ApplicationRecord
           has_many :owned_groups, class_name: 'Group', :foreign_key => 'owner_id'
           has_many :group_members
           has_many :groups, through: :group_members
-
+          
+          has_many :invitations, :class_name => "Invite", :foreign_key => 'recipient_id'
+          has_many :sent_invites, :class_name => "Invite", :foreign_key => 'sender_id'
 
         
          def self.from_omniauth(auth)

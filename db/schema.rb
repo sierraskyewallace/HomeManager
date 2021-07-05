@@ -10,13 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_04_223846) do
+ActiveRecord::Schema.define(version: 2021_07_05_223940) do
 
   create_table "group_members", force: :cascade do |t|
     t.integer "user_id"
     t.integer "group_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "email"
   end
 
   create_table "groups", force: :cascade do |t|

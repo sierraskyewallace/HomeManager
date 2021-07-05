@@ -10,9 +10,11 @@ class TasksController < ApplicationController
       end
     
       def new
-        @group = Group.find_by_id(params[:id])
-        @task = current_user.tasks.build
-        @groups = Group.where('id = ?', current_user.group_id) ##change to model scope?
+        @group_member = GroupMember.find_by_email(params[:email])
+        @group_members = GroupMember.all
+        @group = Group.find_by_id(params[:group_id])
+        @task = @group.tasks.build
+        #@groups = Group.where('id = ?', current_user.group_id) ##change to model scope?
       end
 
       def edit
@@ -21,7 +23,7 @@ class TasksController < ApplicationController
     
       def create
         @group = Group.find_by_id(params[:id])
-        @task = current_user.tasks.build(task_params)
+        @task = Group.tasks.build(task_params)
     
           if @task.save
             redirect_to @task

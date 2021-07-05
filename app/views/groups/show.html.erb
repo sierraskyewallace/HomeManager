@@ -14,6 +14,7 @@
 <% if @group.owner %>
 <%= link_to 'Invite User', 
 new_group_invite_path(@group, invite: { invitable_id: @group.id, invitable_type: 'Group' } ) %><br>
+<%= link_to 'Group Tasks', group_tasks_path(@group) %><br><br>
 <%= link_to 'Edit Group', edit_group_path(@group) %><br>
 <%= link_to 'Delete Group', group_path(@group), method: :delete %><br>
 <%= link_to 'Back', groups_path %>

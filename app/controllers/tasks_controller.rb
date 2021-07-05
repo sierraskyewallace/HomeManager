@@ -1,9 +1,7 @@
 class TasksController < ApplicationController
     def index
-      @groups = Group.all
-      @group = Group.find_by_id(params[:group_id])
-        @user = User.all
-        @tasks = current_user.tasks
+        @group = Group.find_by_id(params[:group_id])
+        @tasks = @group.tasks
       end
     
       def show
@@ -12,6 +10,7 @@ class TasksController < ApplicationController
       end
     
       def new
+        @group = Group.find_by_id(params[:id])
         @task = current_user.tasks.build
         @groups = Group.where('id = ?', current_user.group_id) ##change to model scope?
       end
@@ -21,6 +20,7 @@ class TasksController < ApplicationController
       end
     
       def create
+        @group = Group.find_by_id(params[:id])
         @task = current_user.tasks.build(task_params)
     
           if @task.save

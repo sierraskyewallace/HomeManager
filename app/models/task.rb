@@ -1,6 +1,6 @@
 class Task < ApplicationRecord
     belongs_to :user
-    belongs_to :group_member
+    belongs_to :group
    
     
     validates :name, presence: true

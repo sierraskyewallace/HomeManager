@@ -1,7 +1,9 @@
 <p> if admin, new tasks form </p>
 
-<%= if @group.owner %>
-    <%= form_for (@user, @task), url: user_tasks do |f| %> 
-    <%= f.text_field :name %>
-    <%= f.collection_select :group_member, User.all, @user.id %>
+<% if @group.owner %>
+    <%= render 'task' %>
     <% end %>
+
+<p> cant come here unless group owner %>
+
+<%= link_to 'Create a Group', groups_path %>

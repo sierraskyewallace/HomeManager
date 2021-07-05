@@ -7,7 +7,7 @@ Rails.application.routes.draw do
       end
  
   resources :groups do 
-    resources :tasks 
+    resources :tasks
   end
 
   

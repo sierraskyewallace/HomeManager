@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     resources :invites, controller: 'invitation/invites', only: [:new, :create]
       end
  
-  resources :users do 
+  resources :group_members do 
     resources :tasks 
   end
 

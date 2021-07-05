@@ -1,5 +1,7 @@
 class TasksController < ApplicationController
     def index
+      @groups = Group.all
+      @group = Group.find_by_id(params[:group_id])
         @user = User.all
         @tasks = current_user.tasks
       end
@@ -56,4 +58,3 @@ class TasksController < ApplicationController
         end
     end
     
-end

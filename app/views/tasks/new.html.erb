@@ -1,1 +1,7 @@
 <p> if admin, new tasks form </p>
+
+<%= if @group.owner %>
+    <%= form_for (@user, @task), url: user_tasks do |f| %> 
+    <%= f.text_field :name %>
+    <%= f.collection_select :group_member, User.all, @user.id %>
+    <% end %>

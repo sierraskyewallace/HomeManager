@@ -10,16 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_06_041523) do
+ActiveRecord::Schema.define(version: 2021_07_06_214804) do
 
   create_table "lists", force: :cascade do |t|
     t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "name"
+  end
+
+  create_table "task_lists", force: :cascade do |t|
+    t.integer "task_id"
+    t.integer "list_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "tasks", force: :cascade do |t|
-    t.integer "user_id"
     t.integer "list_id"
     t.string "name"
     t.boolean "completed"

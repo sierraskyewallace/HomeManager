@@ -1,65 +1,44 @@
 class TasksController < ApplicationController
-  #before_action :owner?, only: [:new, :edit, :update, :create, :destroy]
+  before_action :set_task
+
     def index
-      @groups = Group.all
-        @group = Group.find_by_id(params[:group_id])
-        #@tasks = Task.find_by_id(params[:task_id])
-        @tasks = @group.tasks
+
       end
     
       def show
-        @group = Group.find_by_id(params[:group_id])
-        @task = Task.find_by_id(params[:id])
+
       end
     
       def new
-        @group = Group.find_by_id(params[:group_id])
-        @task = @group.tasks.build
-        #@groups = Group.where('id = ?', current_user.group_id) ##change to model scope?
+
       end
     
       def create
-        @group = Group.find_by_id(params[:group_id])
-        @task = Task.find_by_id(params[:task_id])
-        @task = @group.tasks.build(task_params)
-          if @task.save
-            redirect_to group_task_path(@group, @task)
-          else
-            render :new 
-          end
+       
         end
 
         def edit
-          @task = Task.find_by_id(params[:id])
-          @group = Group.find_by_id(params[:group_id])
+
         end
 
-      def update
-        @group = Group.find_by_id(params[:group_id])
-        @task = Task.find_by_id(params[:id])
-          if @group.tasks.update(task_params)
-            redirect_to group_task_path(@group, @task)
-          else
-            render :edit 
-          end
+        def update
         end
 
     
 
       def destroy
-        @task.destroy
-        redirect_to root_path
+
         end
     
       private
  
-      #def owner?
-        #Group.owner_id == current_user.owner_id
-      #end
-    
-       
+        def set_task
+          @task = Task.find_by_id(params[:id])
+        end
+
+
         def task_params
-          params.require(:task).permit(:name, :completed, :group_id, :user_id)
+          params.require(:task).permit(:name)
         end
     end
     

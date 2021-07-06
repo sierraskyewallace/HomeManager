@@ -10,26 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_06_025525) do
+ActiveRecord::Schema.define(version: 2021_07_06_042100) do
 
-  create_table "group_members", force: :cascade do |t|
+  create_table "assignments", force: :cascade do |t|
     t.integer "user_id"
-    t.integer "group_id"
+    t.integer "task_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "email"
-  end
-
-  create_table "groups", force: :cascade do |t|
-    t.string "name"
-    t.integer "owner_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.integer "user_id"
   end
 
   create_table "invites", force: :cascade do |t|
-    t.integer "group_id"
     t.string "email"
     t.string "token"
     t.integer "sender_id"
@@ -45,21 +35,24 @@ ActiveRecord::Schema.define(version: 2021_07_06_025525) do
     t.index ["token"], name: "index_invites_on_token"
   end
 
+  create_table "lists", force: :cascade do |t|
+    t.integer "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "tasks", force: :cascade do |t|
     t.integer "user_id"
-    t.integer "group_id"
+    t.integer "list_id"
     t.string "name"
     t.boolean "completed"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "group_member_id"
   end
 
   create_table "users", force: :cascade do |t|
-    t.boolean "admin", default: false
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
-    t.string "first_name"
     t.integer "group_id"
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"

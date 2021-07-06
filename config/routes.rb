@@ -1,15 +1,17 @@
 Rails.application.routes.draw do
 
-  resources :group_members
+  
   root to: "sessions#home"
 
   devise_for :users, :controllers => {omniauth_callbacks: "users/omniauth_callbacks", invitations: 'users/invitations' } 
 
-  resources :assignments
+  resources :lists  #unsure of where to put this right now
+  #resources :assignments use this so group members are ASSIGNED to  task
 
-    resources :lists 
+  resources :groups do
+  resources :group_members do   #may need to nest invitations somehow for group invites?
       resources :tasks 
-  
+  end
 
     
 

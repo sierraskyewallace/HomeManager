@@ -27,3 +27,17 @@ GroupMember (JOIN) - belongs_to :user
 
 User CRUD list, invite other users, and assigns tasks.
 
+
+Desired paths - 
+
+groups/groupmembers/tasks/
+groups/1/groupmembers/tasks
+groups/3/groupmembers/6/tasks
+groups/1/mytasks ????
+
+users/invites ? need to pass in group attribute at some point????
+
+lists/tasks ??? may remove lists if irrelevant or too convoluted
+
+
+

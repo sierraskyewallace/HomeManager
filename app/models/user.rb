@@ -13,10 +13,6 @@ class User < ApplicationRecord
           has_many :group_members
           has_many :groups, through: :group_members
           has_many :tasks
-          
-          
-          #has_many :invitations, :class_name => "Invite", :foreign_key => 'recipient_id'
-          #has_many :sent_invites, :class_name => "Invite", :foreign_key => 'sender_id'
         
          def self.from_omniauth(auth)
           where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
@@ -27,4 +23,9 @@ class User < ApplicationRecord
           user.password = Devise.friendly_token[0, 20] 
          end
         end
+
+        def admin?
+                admin 
+        end
+        
 end

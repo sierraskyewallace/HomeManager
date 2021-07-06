@@ -1,6 +1,7 @@
-<% if @group.owner %>
+
 <%= @task.name %> 
 <%= @task.user.email %>
 <%= link_to 'Edit Task', edit_group_task_path(@group, @task) %>
-<% end %>
 
+
+<%= link_to 'Back', group_tasks_path %>

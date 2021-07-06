@@ -1,16 +1,18 @@
 <p> show current users tasks  </p>
 
-<% if @group.owner %>
-<%= link_to 'New Task', new_group_task_path(@group) %> 
-<% @group.tasks.each do |t| %>
-    <% t.name %>
-    <% t.user %>
-    <% t.completed %>
-    <% end %>
-<% end %> 
 
+<%= link_to 'New Task', new_group_task_path(@group) %> <br>
+
+<h3>Group Tasks</h3>
+<% @group.tasks.each do |t| %> <br>
+    <%= t.name %>
+    <%= t.user.email %>
+    <%= t.completed %> 
+    <% end %>
+
+
+<h3>My Tasks </h3>
 <% current_user.tasks.each do |t| %>
     <% t.name %>
-    <% t.user %>
     <% t.completed %>
     <% end %>

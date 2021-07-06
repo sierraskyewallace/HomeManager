@@ -1,11 +1,11 @@
 class Ability
   include CanCan::Ability
 
-  def initialize(group)
+  def initialize(user)
     # Define abilities for the passed in user here. For example:
     #
-       group ||= Group.new # guest user (not logged in)
-       if group.owner?
+       user ||= User.new # guest user (not logged in)
+       if user.admin?
          can :manage, :all
        else
          can :read, :all

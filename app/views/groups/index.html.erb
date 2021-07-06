@@ -2,12 +2,12 @@
 
 
 
-   <% @groups.each do |g| %>
-        <%= link_to g.name, group_path(g) %>
-        <%= link_to 'Edit', edit_group_path(g) %>
-        <%= link_to 'Destroy', g, method: :delete %>
+ <ul>  <% @groups.each do |g| %><br>
+       <li> <%= link_to g.name, group_path(g) %> </li>
+        <%= link_to 'Edit', edit_group_path(g) %> 
+        <%= link_to 'Destroy', g, method: :delete %> </li>
 <% end %>
-
+</ul>
 <br>
 <br>
 

@@ -1,5 +1,5 @@
 class GroupsController < ApplicationController
-  before_action :owner, only: [:new, :create, :update, :edit, :destroy]
+  #before_action :owner?, only: [:new, :create, :update, :edit, :destroy]
     def index
         @user = User.all
         @groups = Group.all
@@ -54,9 +54,9 @@ class GroupsController < ApplicationController
               @group = Group.find(params[:id])
             end
             
-            def owner
-              current_user.admin? == true
-            end
+            #def owner?
+              #current_user.admin? == true
+            #end
         
             
             def group_params

@@ -1,8 +1,9 @@
 class TasksController < ApplicationController
-  before_action :owner, only: [:new, :edit, :update, :create, :destroy]
+  #before_action :owner?, only: [:new, :edit, :update, :create, :destroy]
     def index
       @groups = Group.all
         @group = Group.find_by_id(params[:group_id])
+        @tasks = Task.all
         @tasks = @group.tasks
       end
     
@@ -52,9 +53,9 @@ class TasksController < ApplicationController
     
       private
  
-      def owner
-        current_user.admin? == true
-      end
+      #def owner?
+        #Group.owner_id == current_user.owner_id
+      #end
     
        
         def task_params

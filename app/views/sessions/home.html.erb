@@ -2,8 +2,7 @@
     <h3> Welcome, <%= current_user.email if !current_user.nil? %></h3><br>
     
 
-    <%= link_to 'Invite User', invites_path %><br><br>
-    <%= link_to 'My Tasks', tasks_path %><br>
+    <%= link_to 'Invite User', new_invite_path %><br><br>
     <%= link_to 'My Lists', lists_path %><br>
     
     

@@ -1,10 +1,14 @@
-HomeManager - group task app 
+HomeManager 
 
-Admin user - can CRUD tasks (create, read, update, destroy)
+User
 
-child user - can read task and destroy(complete)
+List
 
-Need to:
+Task
 
-User signs in, if admin, create a group, iuvite users, assign those users of the group to tasks
-if not admin, can sign in and view group and tasks assigned to them 
+Invite
+
+Assignment
+
+User CRUD list, invite other users, and assigns tasks.
+

@@ -1,7 +1,7 @@
 class GroupsController < ApplicationController
-
+    before_action :set_group
     def index 
-        @group = Group.all
+        @groups = Group.all
     end
 
     def new 
@@ -15,7 +15,7 @@ class GroupsController < ApplicationController
     end
 
     def create 
-        @group.new(group_params)
+        @group = Group.new(group_params)
         if @group.save 
             redirect_to @group 
         else

@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   resources :group_members do   #may need to nest invitations somehow for group invites?
       resources :tasks 
   end
+end
 
     
 

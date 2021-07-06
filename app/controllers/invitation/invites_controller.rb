@@ -15,7 +15,6 @@ module Invitation
   class InvitesController < ApplicationController
     
     def new
-      @group = Group.find_by_id(params[:group_id])
       @invite = InviteForm.new(invite_params)
       render template: 'invites/new'
     end

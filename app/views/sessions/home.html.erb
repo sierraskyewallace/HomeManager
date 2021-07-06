@@ -2,9 +2,12 @@
     <h3> Welcome, <%= current_user.email if !current_user.nil? %></h3><br>
     
 
-    <p> tasks </p>
-    <p> lists </p>
-    <p> invite users </p>
+    <%= link_to 'Invite User', invites_path %><br><br>
+    <%= link_to 'My Tasks', tasks_path %><br>
+    <%= link_to 'My Lists', lists_path %><br>
+    
+    
+    <% else %>
 
     <h5> Welcome, please <%= link_to 'Sign in', new_user_session_path %> or <%= link_to 'Sign up', new_user_registration_path %> to continue. </h5>
 

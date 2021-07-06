@@ -1,7 +1,0 @@
-<h1> Your Group - <%= @group.name %> </h1><br>
-
-<%= link_to 'Invite Group Member', new_user_invitation_path %><br><br>
-<%= link_to 'Group Members', group_group_members_path(@group) %><br><br>
-
-<%= link_to 'Edit Group', edit_group_path(@group) %><br>
-<%= link_to 'Delete Group', group_path(@group), method: :delete %>

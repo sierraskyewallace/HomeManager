@@ -1,4 +1,4 @@
-class Groups::InvitationsController < DeviseController
+class Users::InvitationsController < DeviseController
     prepend_before_action :authenticate_inviter!, only: [:new, :create]
     prepend_before_action :has_invitations_left?, only: [:create]
     prepend_before_action :require_no_authentication, only: [:edit, :update, :destroy]
@@ -10,14 +10,12 @@ class Groups::InvitationsController < DeviseController
   
     # GET /resource/invitation/new
     def new
-      @group = Group.find_by_id(params[:id])
       self.resource = resource_class.new
       render :new
     end
   
     # POST /resource/invitation
     def create
-      @group = Group.find_by_id(params[:group_id])
       self.resource = invite_resource
       resource_invited = resource.errors.empty?
   
@@ -49,7 +47,7 @@ class Groups::InvitationsController < DeviseController
       raw_invitation_token = update_resource_params[:invitation_token]
       self.resource = accept_resource
       invitation_accepted = resource.errors.empty?
-  
+      
       yield resource if block_given?
   
       if invitation_accepted

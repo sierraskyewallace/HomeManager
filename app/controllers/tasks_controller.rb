@@ -7,32 +7,35 @@ class TasksController < ApplicationController
     end
 
     def show 
-      @task = current_user.tasks
+      @task = Task.find_by_id(params[:id])
       @list = List.find_by_id(params[:list_id])
     end
 
     def new 
       @list = List.find_by_id(params[:list_id])
-      @task = current_user.tasks.build
+      @task = @list.tasks.build
     end
     
     def create
       @list = List.find_by_id(params[:list_id])
-      #@task = Task.find_by_id(params[:id])
-       @task = current_user.tasks.build(task_params)
+       @task = @list.tasks.build(task_params)
           if @task.save 
-            redirect_to @task 
+            redirect_to list_task_path(@list, @task)
           else 
             render :new 
           end
         end
 
     def edit
+      @list = List.find_by_id(params[:list_id])
+      @task = Task.find_by_id(params[:id])
     end
 
    def update
+    @list = List.find_by_id(params[:list_id])
+    @task = Task.find_by_id(params[:id])
     if @task.update(task_params)
-      redirect_to @task 
+      redirect_to list_task_path(@task)
     else 
       render :edit 
     end
@@ -41,8 +44,9 @@ class TasksController < ApplicationController
     
 
    def destroy
+    @task = Task.find_by_id(params[:id])
     @task.destroy 
-    redirect_to tasks_path
+    redirect_to list_tasks_path
    end
     
       private

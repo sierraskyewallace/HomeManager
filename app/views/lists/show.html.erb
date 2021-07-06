@@ -5,7 +5,7 @@
     <br>
 <%= link_to 'Add Task', new_list_task_path(@list) %><br>
 
-<% @list.tasks.each do |t| %>
+<% @list.tasks.each do |t| %><br>
     <%= t.name %>
     <% end %>
 <br><br>

@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :group_members
   root to: "sessions#home"
 
   devise_for :users, :controllers => {omniauth_callbacks: "users/omniauth_callbacks", invitations: 'users/invitations' } 

@@ -1,5 +1,5 @@
 
-<%= form_for @task, url: group_task_path do |f| %> 
+<%= form_for [@group,@task], url: group_task_path do |f| %> 
     <%= f.label :name %>
     <%= f.text_field :name %><br>
     <%= f.label :assign_user %>

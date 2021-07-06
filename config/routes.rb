@@ -7,6 +7,7 @@ Rails.application.routes.draw do
       end
  
   resources :groups do 
+    resources :group_members, only: [:destroy]
     resources :tasks
   end
 
@@ -14,10 +15,8 @@ Rails.application.routes.draw do
 
 
 
-  devise_for :users, :controllers => {omniauth_callbacks: "users/omniauth_callbacks", registrations: "users/registrations" }  do 
-    get 'account'  => 'users/registrations#edit', as: 'edit_user_registration'
-    put 'account/:id' => 'users/registrations#update', as: 'update_user_registration'
-  end 
+  devise_for :users, :controllers => {omniauth_callbacks: "users/omniauth_callbacks" }  
+ 
  
     
 

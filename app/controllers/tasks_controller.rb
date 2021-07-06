@@ -3,7 +3,7 @@ class TasksController < ApplicationController
     def index
       @groups = Group.all
         @group = Group.find_by_id(params[:group_id])
-        @tasks = Task.all
+        #@tasks = Task.find_by_id(params[:task_id])
         @tasks = @group.tasks
       end
     

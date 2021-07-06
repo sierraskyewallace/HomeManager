@@ -1,6 +1,5 @@
-<p> if admin, new tasks form </p>
-
-<% if @group.owner %>
+<div class="container">
+<h1> New Task </h1>
     
 <%= form_for [@group, @task], url: group_tasks_path do |f| %> 
     <%= f.label :name %>
@@ -10,8 +9,7 @@
     <%= f.submit 'Assign Task'%>
     <% end %>
     
-    <% end %>
-<br>
-<p> cant come here unless group owner </p>
+
 <br>
 <%= link_to 'Create a Group', groups_path %>
+</div>

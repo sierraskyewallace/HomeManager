@@ -3,7 +3,8 @@
 
 
 <ul><% @group.users.each do |g| %>
-    <li><%= g.email %></li><br>
+    <li><%= g.email %><br>
+    <%= link_to 'Remove User', group_group_member_path(@user), method: :delete %></li>
     <% end %>
     </ul><br>
 

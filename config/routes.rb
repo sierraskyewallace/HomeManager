@@ -6,9 +6,9 @@ Rails.application.routes.draw do
 
   resources :assignments
 
-    resources :lists do 
+    resources :lists 
       resources :tasks 
-    end
+  
 
     
 

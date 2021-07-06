@@ -1,4 +1,5 @@
 class TasksController < ApplicationController
+  before_action :owner, only: [:new, :edit, :update, :create, :destroy]
     def index
       @groups = Group.all
         @group = Group.find_by_id(params[:group_id])
@@ -6,7 +7,6 @@ class TasksController < ApplicationController
       end
     
       def show
-        #@user = User.find_by_id(params[:id])
         @group = Group.find_by_id(params[:group_id])
         @task = Task.find_by_id(params[:id])
       end
@@ -16,14 +16,10 @@ class TasksController < ApplicationController
         @task = @group.tasks.build
         #@groups = Group.where('id = ?', current_user.group_id) ##change to model scope?
       end
-
-      def edit
-        @groups = current_user.groups
-      end
     
       def create
-        @task = Task.find_by_id(params[:task_id])
         @group = Group.find_by_id(params[:group_id])
+        @task = Task.find_by_id(params[:task_id])
         @task = @group.tasks.build(task_params)
           if @task.save
             redirect_to group_task_path(@group, @task)
@@ -32,10 +28,16 @@ class TasksController < ApplicationController
           end
         end
 
-      def update
+        def edit
+          @task = Task.find_by_id(params[:id])
+          @group = Group.find_by_id(params[:group_id])
+        end
 
-          if @task.update(task_params)
-            redirect_to @task
+      def update
+        @group = Group.find_by_id(params[:group_id])
+        @task = Task.find_by_id(params[:id])
+          if @group.tasks.update(task_params)
+            redirect_to group_task_path(@group, @task)
           else
             render :edit 
           end
@@ -50,9 +52,9 @@ class TasksController < ApplicationController
     
       private
  
-        def set_task
-          @task = Task.find_by_id(params[:id])
-        end
+      def owner
+        current_user.admin? == true
+      end
     
        
         def task_params

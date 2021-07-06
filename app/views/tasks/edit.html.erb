@@ -1,0 +1,11 @@
+<% if @group.owner %>
+
+<%= form_for @task, url: group_task_path do |f| %> 
+    <%= f.label :name %>
+    <%= f.text_field :name %><br>
+    <%= f.label :assign_user %>
+    <%= f.collection_select :user_id, @group.users.all, :id, :email %> 
+    <%= f.submit 'Assign Task'%>
+    <% end %>
+
+<% end %>

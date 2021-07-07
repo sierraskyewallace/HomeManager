@@ -4,11 +4,12 @@ Rails.application.routes.draw do
 
   devise_for :users, :controllers => {omniauth_callbacks: "users/omniauth_callbacks" } 
 
+
   resources :groups do
     resources :invites, controller: 'invitation/invites', only: [:new, :create]
 end
 
-resources :group_members do
+resources :groups do
 resources :tasks
 end
 

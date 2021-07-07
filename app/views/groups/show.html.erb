@@ -1,5 +1,10 @@
 <h1> <%= @group.name %> </h1><br>
 
+<% @group.users.each do |g| %><br>
+    <%= g.email %>
+    <% end %>
+<br>
+
 <%= link_to 'Add Group Member', 
 new_group_invite_path(@group,invite: { invitable_id: @group.id, invitable_type: 'Group' } ) %><br>
 <%= link_to 'Edit Group', edit_group_path(@group) %><br>

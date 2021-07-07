@@ -1,8 +1,9 @@
 class ListsController < ApplicationController
     before_action :set_list 
+    before_action :auth
     
     def index 
-        @lists = List.all #render lists, change to current user asp
+        @lists = current_user.lists 
     end
 
     def show 
@@ -26,8 +27,9 @@ class ListsController < ApplicationController
     end
 
     def update
+        @list = List.find_by_id(params[:id])
         if @list = List.update(list_params) 
-            redirect_to @list 
+            redirect_to list_path(@list) 
         else 
             render :edit 
         end

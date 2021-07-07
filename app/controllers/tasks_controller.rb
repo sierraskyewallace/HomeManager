@@ -1,9 +1,10 @@
 class TasksController < ApplicationController
   before_action :set_task
+  before_action :auth
 
     def index
       @lists = List.find_by_id(params[:list_id])
-      @tasks = Task.all
+      @tasks = current_user.tasks
     end
 
     def show 
@@ -56,6 +57,9 @@ class TasksController < ApplicationController
      @task = Task.find_by_id(params[:task_id])
    end
 
+   def auth 
+    current_user == true 
+   end
 
    def task_params
       params.require(:task).permit(:name)

@@ -1,4 +1,4 @@
 class Notebook < ApplicationRecord
-    has_many :notes 
     belongs_to :user
+    has_many :notes
 end

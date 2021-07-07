@@ -1,0 +1,4 @@
+<h1> groups </h1>
+
+<%= link_to 'invite a friend', 
+new_group_invite_path(invite: { invitable_id: group.id, invitable_type: 'Group' } ) %>

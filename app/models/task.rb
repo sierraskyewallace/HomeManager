@@ -1,6 +1,6 @@
 class Task < ActiveRecord::Base
     has_many :users
-    belongs_to :user_task
+    belongs_to :user
   
     scope :completed, -> { where(completion_status: 'complete') }
 

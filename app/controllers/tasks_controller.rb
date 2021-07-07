@@ -1,65 +1,50 @@
 class TasksController < ApplicationController
-  before_action :set_task
-  before_action :auth
+  before_action :set_task, only: [:show, :edit, :update, :destroy]
 
-    def index
-      @tasks = current_user.tasks
+  def index
+    @family = Family.find(params[:id])
+    render json: @family.tasks, include: ['tasks.user']
+  end
+
+  def new
+    @task = Task.new
+  end
+
+  def create
+    @task = Family.find(params[:id]).tasks.build(task_params)
+    if @task.save
+      redirect_to family_path(current_family)
+    else
+      render template: 'tasks/new'
     end
+  end
 
-    def show 
-      @task = Task.find_by_id(params[:id])
+  def show
+    render json: @task, include: ['tasks.user']
+  end
 
-    end
+  def edit
+  end
 
-    def new 
-      @task = @list.tasks.build
-    end
-    
-    def create
-       @task = @list.tasks.build(task_params)
-          if @task.save 
-            redirect_to list_task_path(@list, @task)
-          else 
-            render :new 
-          end
-        end
-
-    def edit
-
-      @task = Task.find_by_id(params[:id])
-    end
-
-   def update
-  
-    @task = Task.find_by_id(params[:id])
+  def update
     if @task.update(task_params)
-      redirect_to list_task_path(@task)
-    else 
-      render :edit 
+      redirect_to family_path(@task.family_id)
+    else
+      render template: 'tasks/edit'
     end
-   end
+  end
 
-    
+  def destroy
+    @task.destroy
+    redirect_to family_path(current_family)
+  end
 
-   def destroy
-  
-    @task = Task.find_by_id(params[:id])
-    @task.destroy 
-    redirect_to @list
-   end
-    
-      private
- 
-   def set_task
-     @task = Task.find_by_id(params[:task_id])
-   end
+  private
+  def task_params
+    params.require(:task).permit(:name, :family_id)
+  end
 
-   def auth 
-    current_user == true 
-   end
-
-   def task_params
-      params.require(:task).permit(:name)
-      end
-    end
-    
+  def set_task
+    @task = task.find(params[:id])
+  end
+end

@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  resources :groups
   resources :families
   root to: "sessions#home"
 

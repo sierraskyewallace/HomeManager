@@ -10,13 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_07_001704) do
+ActiveRecord::Schema.define(version: 2021_07_07_005719) do
 
-  create_table "lists", force: :cascade do |t|
-    t.integer "user_id"
+  create_table "families", force: :cascade do |t|
+    t.string "name"
+    t.string "password_digest"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "name"
   end
 
   create_table "notebooks", force: :cascade do |t|
@@ -35,17 +35,17 @@ ActiveRecord::Schema.define(version: 2021_07_07_001704) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "task_lists", force: :cascade do |t|
-    t.integer "task_id"
-    t.integer "list_id"
+  create_table "tasks", force: :cascade do |t|
+    t.integer "family_id"
+    t.string "name"
+    t.boolean "completed"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "tasks", force: :cascade do |t|
-    t.integer "list_id"
-    t.string "name"
-    t.boolean "completed"
+  create_table "user_tasks", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "task_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -53,7 +53,7 @@ ActiveRecord::Schema.define(version: 2021_07_07_001704) do
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
-    t.integer "group_id"
+    t.integer "family_id"
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"

@@ -1,7 +1,0 @@
-<h1> Edit List - <%= @list.name %> </h1>
-
-<%= form_for @list, url: list_path do |l| %>
-    <%= l.label :name %>
-    <%= l.text_field :name %>
-    <%= l.submit %>
-    <% end %>

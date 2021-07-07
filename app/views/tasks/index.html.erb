@@ -1,5 +1,15 @@
-<h1> Your tasks </h1>
+<%= link_to 'New Task', new_group_task_path(@group) %> <br>
 
-<% @tasks.each do |t| %>
+<h3>Group Tasks</h3>
+<% @group.tasks.each do |t| %> <br>
+    <%= t.name %>
+    <%= t.user.email %>
+    <%= t.completed %> 
+    <% end %>
+
+
+<h3>My Tasks </h3>
+<% current_user.tasks.each do |t| %>
     <% t.name %>
+    <% t.completed %>
     <% end %>

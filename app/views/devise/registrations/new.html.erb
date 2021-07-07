@@ -9,8 +9,8 @@
   </div>
 
   <% if @token != nil %>
-    <%= f.hidden_field :invite_token, value: @group.id %>
-    <% end %>
+    <%= hidden_field_tag :invite_token, @token %>
+<% end %>
     
   <div class="field">
     <%= f.label :password %>

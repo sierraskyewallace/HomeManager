@@ -10,8 +10,8 @@ class User < ApplicationRecord
           has_many :tasks
           has_many :notebooks
           has_many :notes, through: :notebooks  
-          has_many :invites
-          has_many :groups #, :through => :invites   
+          has_many :group_members
+          has_many :groups, through: :group_members
           
          def self.from_omniauth(auth)
           where(provider: auth.provider, uid: auth.uid).first_or_create do |user|

@@ -10,6 +10,7 @@ class GroupsController < ApplicationController
 
     def show
         @user = User.find_by_id(params[:id])
+        @user = User.all
     end
 
     def new 
@@ -19,6 +20,7 @@ class GroupsController < ApplicationController
 
     def create
         @group = current_user.groups.build(group_params)
+        @group.users << current_user
         if @group.save
             redirect_to @group 
         else 
@@ -48,6 +50,6 @@ class GroupsController < ApplicationController
     end
 
     def group_params
-        params.require(:group).permit(:name)
+        params.require(:group).permit(:name, users_attributes: [:id, :first_name, :email, :_destroy])
     end
 end

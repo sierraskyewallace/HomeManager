@@ -26,9 +26,17 @@ class GroupsController < ApplicationController
     end
 
     def update
+        @group = Group.find_by_id(params[:id])
+        if @group.update(group_params)
+            redirect_to @group 
+        else 
+            render :new 
+        end
     end
 
     def destroy
+        @group.destroy 
+        redirect_to groups_path
     end
 
 

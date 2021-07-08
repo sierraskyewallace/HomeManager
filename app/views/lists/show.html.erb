@@ -5,10 +5,6 @@
     <% end %>
 
 <br>
-    <%= render @list.tasks %>
-    <% if !@list.tasks.nil? %>
-    <%= button_to "Task Complete", lists_path, method: :Delete %>
-    <% else %>
-    <h4>Nothing to do!</h4>
-    <% end %>
+<%= render @list.tasks %>
+
 

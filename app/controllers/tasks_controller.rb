@@ -3,6 +3,13 @@ class TasksController < ApplicationController
         @task = Task.all
       end
     
+    def show 
+        @task = Task.find_by_id(params[:id])
+      end
+
+      def new 
+      end
+      
       def create
         @list = List.find(params[:list_id])
         @task = @list.tasks.build(task_params)
@@ -30,4 +37,4 @@ class TasksController < ApplicationController
       end
     end
     
-end
+

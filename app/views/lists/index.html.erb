@@ -1,7 +1,7 @@
-<ul><h3>My Lists</h3>
+<ul><h3>My Lists</h3><br>
 <% @lists.each do |l| %>
-  <input class="toggle-all" type="checkbox">
-  <label for="toggle-all">Done(fix)</label>
-  <ul><h4> <%= link_to l.name, list %></h4></ul>
+  <ul><h4> <%= link_to l.name, l %></h4></ul>
 <% end %>
 </ul>
+
+<%= link_to 'New List', new_list_path %>

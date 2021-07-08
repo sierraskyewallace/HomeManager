@@ -1,6 +1,6 @@
 class ListsController < ApplicationController
     before_action :set_list
-    
+
     def index
         @list = List.new
         @lists = List.all
@@ -8,6 +8,7 @@ class ListsController < ApplicationController
     
       def show
         @list = List.find(params[:id])
+        @task = Task.find_by_id(params[:id])
         @task = Task.new
       end
     
@@ -42,4 +43,4 @@ class ListsController < ApplicationController
         params.require(:list).permit(:name, tasks_attributes: [:name, :status])
       end
     end    
-end
+

@@ -6,7 +6,8 @@ class GroupsController < ApplicationController
     end
 
     def edit 
-        @user = current_user
+        
+        #@user = current_user
         @group = Group.find(params[:id])
     end
 
@@ -29,7 +30,9 @@ class GroupsController < ApplicationController
 
 
     def update
+        @user = User.invitation_accepted
         @group = Group.find(params[:id])
+        @group.users << @user unless @group.users.include?(@user)
         if @group.update(group_params)
             flash[:success] = "Group updated"
             redirect_to @group
@@ -44,8 +47,6 @@ class GroupsController < ApplicationController
 
     def show
         @group = Group.find(params[:id])
-        
-        @users = @group.members
     end
 
     private 
@@ -58,6 +59,6 @@ class GroupsController < ApplicationController
     end
 
     def group_params 
-        params.require(:group).permit(:name, :owner_id, users_attributes: [:id, :email, :_destroy])
+        params.require(:group).permit(:name, :user_id, :owner_id, users_attributes: [:id, :email, :_destroy], usership_attributes: [:id, :group_id, :user_id, :_destroy])
     end
 end

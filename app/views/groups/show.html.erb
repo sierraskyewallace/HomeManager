@@ -1,14 +1,26 @@
 <h1> Your Owned Group </h1> 
 
 <%= @group.name %><br>
-<% @group.members.each do |u| %>
-  <p> <%= u.email %> </p>
-<% end %>
+
 <%= form_for @group do |f| %>
   <%= f.label :add_invited_members %>
-  <%= f.collection_select :members, User.invitation_accepted, :id, :email %>
+  <%= f.collection_select :user_id, User.invitation_accepted, :id, :email %>
 <%= f.submit 'Add Member' %>
 <% end %>
+<br>
+
+<br>
+    <% @group.memberships.each do |m| %><br>
+        <%= m.user.email %>
+        <%= link_to 'Delete Member', group_membership_path(@group, m), method: :delete %>
+        <% end %>
+        <br>
+
+    
+
+<br>
+
+
 <br>
 
 <%= link_to 'Back', groups_path %><br>

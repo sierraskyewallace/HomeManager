@@ -1,0 +1,5 @@
+<%= form_for([@list, @task]) do |f| %>
+    <%= f.text_field :name, placeholder: "Create a task" %>
+    <%= f.collection_select :list, List.all, :id, :name %>
+    <%= f. submit %>
+  <% end %>

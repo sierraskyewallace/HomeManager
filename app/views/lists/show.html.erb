@@ -1,0 +1,14 @@
+<h3><%= @list.name %></h3>
+    <%= form_for([@list, Task.new]) do |f| %>
+      <%= f.text_field :name, placeholder: "Create a task" %>
+      <%= f. submit %>
+    <% end %>
+
+<br>
+    <%= render @list.tasks %>
+    <% if !@list.tasks.nil? %>
+    <%= button_to "Task Complete", lists_path, method: :Delete %>
+    <% else %>
+    <h4>Nothing to do!</h4>
+    <% end %>
+

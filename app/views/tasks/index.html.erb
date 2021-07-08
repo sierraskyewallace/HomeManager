@@ -1,0 +1,4 @@
+<% @tasks.each do |t| %>
+    <% t.name %>
+<%= button_to "Task Complete?", list_task_path(t.list, t), :method => "delete", :class => "destroy" %>
+<% end %>

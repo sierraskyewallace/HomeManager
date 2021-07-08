@@ -1,4 +1,5 @@
 class GroupsController < ApplicationController
+    before_action :owner?, only: [:new, :create, :update, :edit, :destroy]
 
     def index 
         
@@ -8,19 +9,22 @@ class GroupsController < ApplicationController
     end
 
     def new
-        @group = Group.find_by_id(params[:id])
-        @group = current_user.groups.build
+        @user = current_user
+        @group = Group.new
     end
 
     def create
-        @group = Group.find_by_id(params[:id])
-        @group = current_user.groups.build(group_params)
+        @group = Group.new(group_params)
+        @group.owner = current_user
         if @group.save
-            redirect_to @group 
-        else 
-            render :new 
+            flash[:success] = "Group created"
+            redirect_to @group
+        else
+            flash[:danger] = "Error creating group"
+            render :new
         end
     end
+
 
     def update
         #add users here 
@@ -34,10 +38,14 @@ class GroupsController < ApplicationController
 
     private 
 
+    def owner?
+        @owner == current_user
+    end
+
     def set_group
     end
 
     def group_params 
-        params.require(:group).permit(:name, :owner_id)
+        params.require(:group).permit(:name, :owner_id, users_attributes: [:id, :email, :_destroy])
     end
 end

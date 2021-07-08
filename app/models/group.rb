@@ -1,7 +1,12 @@
 class Group < ApplicationRecord
+    has_many :group_members
+    has_many :users, through: :group_members
+
     belongs_to :owner, class_name: "User"
-    has_many :memberships
-    has_many :members, through: :memberships, source: :user
-    
-    accepts_nested_attributes_for :members
+
+    accepts_nested_attributes_for :owner
+
+    def owner?
+        current_user.id == owner.id
+    end
 end

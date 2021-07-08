@@ -6,7 +6,8 @@ class User < ApplicationRecord
   devise  :database_authenticatable, :registerable, :invitable,
           :rememberable, :validatable, :omniauthable, :omniauth_providers => [:google_oauth2]
           
-        has_one :owned_group, foreign_key: "owner_id", class_name: "Group"
+        has_many :owned_groups, class_name: 'Group', :foreign_key => 'owner_id'
+        
         has_many :memberships
         has_many :groups, through: :memberships
         

@@ -1,2 +1,45 @@
 class ListsController < ApplicationController
+    before_action :set_list
+    
+    def index
+        @list = List.new
+        @lists = List.all
+      end
+    
+      def show
+        @list = List.find(params[:id])
+        @task = Task.new
+      end
+    
+      def new 
+        @list = List.new
+        @list.tasks.build
+      end
+    
+      def create
+        @list = List.new(list_params)
+        if @list.save
+          redirect_to @list
+        else
+          render :new
+        end
+      end
+    
+      def destroy
+        @list = List.find(params[:id])
+        @task = Task.find_by(params[:id])
+        @task.destroy
+        redirect_to @list
+      end
+    
+      private
+
+      def set_list 
+        @list = List.find_by_id(params[:id])
+      end
+    
+      def list_params
+        params.require(:list).permit(:name, tasks_attributes: [:name, :status])
+      end
+    end    
 end

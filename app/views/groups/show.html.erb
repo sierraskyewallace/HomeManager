@@ -1,2 +1,18 @@
 <h1> Your Owned Group </h1> 
+
+<%= @group.name %><br>
+<% @group.members.each do |u| %>
+  <p> <%= u.email %> </p>
+<% end %>
+<%= form_for @group do |f| %>
+  <%= f.label :add_members %>
+  <%= f.collection_select :members, User.invitation_accepted, :id, :email %>
+<%= f.submit %>
+<% end %>
+<br>
+
+
+<%= link_to 'Edit', edit_group_path(@group) %> <br>
+<%= link_to 'Destroy', @group, method: :delete, data: { confirm: 'Are you sure?' } %>
+
 <p> show users owned group and its memebers & crud links </p>

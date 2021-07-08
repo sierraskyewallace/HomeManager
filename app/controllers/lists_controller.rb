@@ -2,6 +2,7 @@ class ListsController < ApplicationController
     before_action :set_list
 
     def index
+      @tasks = Task.all
         @list = List.new
         @lists = List.all
       end
@@ -48,7 +49,7 @@ class ListsController < ApplicationController
       private
 
       def set_list 
-        @list = List.find_by_id(params[:id])
+        @list = List.find_by_id(params[:list_id])
       end
     
       def list_params

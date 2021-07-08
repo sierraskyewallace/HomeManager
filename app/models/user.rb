@@ -3,17 +3,12 @@ class User < ApplicationRecord
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable, :recoverable,
-  devise  :database_authenticatable, :registerable, 
+  devise  :database_authenticatable, :registerable, :invitable,
           :rememberable, :validatable, :omniauthable, :omniauth_providers => [:google_oauth2]
           
           
           has_many :user_lists 
           has_many :lists, through: :user_lists
-
-          has_many :invitations, :class_name => "Invite", :foreign_key => 'recipient_id'
-          has_many :sent_invites, :class_name => "Invite", :foreign_key => 'sender_id'
-
-
 
 
          def self.from_omniauth(auth)

@@ -7,11 +7,8 @@ class User < ApplicationRecord
           :rememberable, :validatable, :omniauthable, :omniauth_providers => [:google_oauth2]
           
           
-          #has_many :tasks#, through: :groups
-          has_many :notebooks
-          has_many :notes, through: :notebooks  
-          has_many :group_members
-          has_many :groups, through: :group_members
+          has_many :user_lists 
+          has_many :lists, through: :user_lists
 
           has_many :invitations, :class_name => "Invite", :foreign_key => 'recipient_id'
           has_many :sent_invites, :class_name => "Invite", :foreign_key => 'sender_id'

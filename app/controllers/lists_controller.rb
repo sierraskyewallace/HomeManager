@@ -7,7 +7,7 @@ class ListsController < ApplicationController
       end
     
       def show
-        @list = List.find(params[:id])
+        @list = List.find_by_id(params[:id])
         @task = Task.find_by_id(params[:id])
         @task = Task.new
       end
@@ -40,7 +40,7 @@ class ListsController < ApplicationController
       end
     
       def destroy
-        @list = List.find(params[:id])
+        @list = List.find_by_id(params[:id])
         @list.destroy
         redirect_to lists_path
       end

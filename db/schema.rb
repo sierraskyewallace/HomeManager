@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_07_222145) do
+ActiveRecord::Schema.define(version: 2021_07_08_014452) do
 
   create_table "group_members", force: :cascade do |t|
     t.integer "user_id"
@@ -27,20 +27,12 @@ ActiveRecord::Schema.define(version: 2021_07_07_222145) do
   end
 
   create_table "invites", force: :cascade do |t|
-    t.integer "group_id"
     t.string "email"
-    t.string "token"
     t.integer "sender_id"
     t.integer "recipient_id"
-    t.integer "invitable_id"
-    t.string "invitable_type"
+    t.string "token"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["email"], name: "index_invites_on_email"
-    t.index ["invitable_id", "invitable_type"], name: "index_invites_on_invitable_id_and_invitable_type"
-    t.index ["recipient_id"], name: "index_invites_on_recipient_id"
-    t.index ["sender_id"], name: "index_invites_on_sender_id"
-    t.index ["token"], name: "index_invites_on_token"
   end
 
   create_table "notebooks", force: :cascade do |t|
@@ -65,6 +57,7 @@ ActiveRecord::Schema.define(version: 2021_07_07_222145) do
     t.boolean "completed"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id"
   end
 
   create_table "users", force: :cascade do |t|

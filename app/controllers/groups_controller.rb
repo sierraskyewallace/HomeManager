@@ -20,7 +20,7 @@ class GroupsController < ApplicationController
 
     def create
         @group = current_user.groups.build(group_params)
-        @group.users << current_user
+        @group.users << current_user #set this user as group admin somehow
         if @group.save
             redirect_to @group 
         else 

@@ -1,6 +1,7 @@
 class TasksController < ApplicationController
 
     def index 
+        @user = User.find_by_id(params[:user_id])
         @group = Group.find_by_id(params[:group_id])
         @tasks = @group.tasks
     end
@@ -46,9 +47,11 @@ class TasksController < ApplicationController
       private
  
         def set_task 
+          @task = Task.find_by_id(params[:id])
         end
 
         def set_group
+          @group = Group.find_by_id(params[:group_id])
         end
        
         def task_params

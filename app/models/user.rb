@@ -7,12 +7,13 @@ class User < ApplicationRecord
           :rememberable, :validatable, :omniauthable, :omniauth_providers => [:google_oauth2]
           
           
-          has_many :tasks
+          #has_many :tasks#, through: :groups
           has_many :notebooks
           has_many :notes, through: :notebooks  
           has_many :group_members
           has_many :groups, through: :group_members
-          
+
+
          def self.from_omniauth(auth)
           where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
           user.provider = auth.provider

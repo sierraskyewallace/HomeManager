@@ -5,14 +5,12 @@
   <p> <%= u.email %> </p>
 <% end %>
 <%= form_for @group do |f| %>
-  <%= f.label :add_members %>
+  <%= f.label :add_invited_members %>
   <%= f.collection_select :members, User.invitation_accepted, :id, :email %>
-<%= f.submit %>
+<%= f.submit 'Add Member' %>
 <% end %>
 <br>
 
-
-<%= link_to 'Edit', edit_group_path(@group) %> <br>
-<%= link_to 'Destroy', @group, method: :delete, data: { confirm: 'Are you sure?' } %>
-
-<p> show users owned group and its memebers & crud links </p>
+<%= link_to 'Back', groups_path %><br>
+<%= link_to 'Edit Group', edit_group_path(@group) %> <br>
+<%= link_to 'Delete Group', @group, method: :delete, data: { confirm: 'Are you sure?' } %>

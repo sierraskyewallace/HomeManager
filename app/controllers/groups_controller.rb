@@ -6,6 +6,8 @@ class GroupsController < ApplicationController
     end
 
     def edit 
+        @user = current_user
+        @group = Group.find(params[:id])
     end
 
     def new
@@ -27,7 +29,14 @@ class GroupsController < ApplicationController
 
 
     def update
-        #add users here 
+        @group = Group.find(params[:id])
+        if @group.update(group_params)
+            flash[:success] = "Group updated"
+            redirect_to @group
+        else
+            flash[:danger] = "Error updating group"
+            render :edit
+        end
     end
 
     def destroy

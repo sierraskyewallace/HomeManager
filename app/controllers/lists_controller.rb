@@ -25,12 +25,24 @@ class ListsController < ApplicationController
           render :new
         end
       end
+
+      def edit 
+        @list = List.find_by_id(params[:id])
+
+      end
+
+      def update 
+        if @list.update(list_params)
+          redirect_to @list
+        else 
+          render :edit 
+        end
+      end
     
       def destroy
         @list = List.find(params[:id])
-        @task = Task.find_by(params[:id])
-        @task.destroy
-        redirect_to @list
+        @list.destroy
+        redirect_to lists_path
       end
     
       private

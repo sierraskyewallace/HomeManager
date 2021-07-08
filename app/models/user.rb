@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  include Invitation::User
+
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable, :recoverable,
@@ -12,6 +12,11 @@ class User < ApplicationRecord
           has_many :notes, through: :notebooks  
           has_many :group_members
           has_many :groups, through: :group_members
+
+          has_many :invitations, :class_name => "Invite", :foreign_key => 'recipient_id'
+          has_many :sent_invites, :class_name => "Invite", :foreign_key => 'sender_id'
+
+
 
 
          def self.from_omniauth(auth)

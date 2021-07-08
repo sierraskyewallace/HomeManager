@@ -1,0 +1,11 @@
+<h1> Groups </h1>
+
+<%= link_to 'Create a Group', new_group_path %>
+
+<% current_user.memberships.each do |g| %>
+    <%= link_to g.name, group_path(g) %>
+    <% end %>
+
+    <br>
+
+<% current_user.owned_group %>

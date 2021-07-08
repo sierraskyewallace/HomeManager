@@ -7,8 +7,9 @@ class User < ApplicationRecord
           :rememberable, :validatable, :omniauthable, :omniauth_providers => [:google_oauth2]
           
         has_one :owned_group, foreign_key: "owner_id", class_name: "Group"
-        has_many :groups, through: :memberships
         has_many :memberships
+        has_many :groups, through: :memberships
+        
         has_many :user_lists 
         has_many :lists, through: :user_lists
 

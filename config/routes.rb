@@ -11,8 +11,7 @@ Rails.application.routes.draw do
 
 
     resources :tasks 
-    
-    get 'users/most_tasks' => 'users#most_tasks'
+
     
 
   

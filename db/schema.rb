@@ -20,12 +20,6 @@ ActiveRecord::Schema.define(version: 2021_07_08_234842) do
     t.integer "user_id"
   end
 
-  create_table "lists", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "memberships", force: :cascade do |t|
     t.integer "user_id"
     t.integer "group_id"
@@ -35,15 +29,8 @@ ActiveRecord::Schema.define(version: 2021_07_08_234842) do
 
   create_table "tasks", force: :cascade do |t|
     t.string "name"
-    t.integer "list_id"
-    t.boolean "completed"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "user_lists", force: :cascade do |t|
     t.integer "user_id"
-    t.integer "list_id"
+    t.boolean "completed"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

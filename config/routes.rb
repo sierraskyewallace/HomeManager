@@ -9,8 +9,8 @@ Rails.application.routes.draw do
     resources :memberships
   end
 
-  resources :lists do
+
     resources :tasks
-  end
+
   
 end

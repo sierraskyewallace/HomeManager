@@ -11,7 +11,7 @@ class User < ApplicationRecord
         has_many :memberships
         has_many :groups, through: :memberships
         
-        has_many :task
+        has_many :tasks
 
 
          def self.from_omniauth(auth)

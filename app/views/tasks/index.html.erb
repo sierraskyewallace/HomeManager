@@ -1,5 +1,13 @@
-<% @tasks.each do |t| %>
+
+<h1> Your Tasks </h1>
+<%= link_to 'New Task', new_task_path %>
+<% current_user.tasks.each do |t| %>
     <% t.name %>
-    <% t.list.name %>
-<%= button_to "Task Complete?", list_task_path(t.list, t), :method => "delete", :class => "destroy" %>
+<%= button_to "Task Complete?", task_path(t), :method => "delete", :class => "destroy" %>
 <% end %>
+
+<br><br>
+
+<h1> Assign a Task to a Group Member </h1>
+<%= link_to 'Assign Tasks', new_task_path %>
+

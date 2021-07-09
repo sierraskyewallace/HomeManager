@@ -1,6 +1,6 @@
 <h1> Your Group </h1>
 
-<% if current_user.owned_groups.nil? %>
+<% if current_user.owned_group.nil? %>
   <p> You don't have any groups. </p>
   <%= link_to 'New Group', new_group_path %>
 <% else %>

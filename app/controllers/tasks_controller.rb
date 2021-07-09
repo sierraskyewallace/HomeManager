@@ -2,32 +2,37 @@ class TasksController < ApplicationController
   before_action :set_task
 
     def index
-        @task = Task.all
+        @group = current_user.groups
+        @tasks = Task.all
       end
     
     def show 
-      #@list = List.find_by_id(params[:list_id])
         @task = Task.find_by(params[:id])
       end
 
       def new 
+        @group = current_user.groups
+        @task = Task.new
       end
       
       def create
-        @list = List.find(params[:list_id])
-        @task = @list.tasks.build(task_params)
-        @task.save
-        redirect_to @list
+        @group = current_user.groups
+        @task = Task.new(task_params)
+        if @task.save
+          redirect_to @task
+        else
+          render 'new'
+        end
       end
       
       def edit
-        @list = List.find_by(params[:list_id])
         @task = Task.find_by(params[:id])
       end
 
       def update 
+        @task = Task.find_by(params[:id])
         if @task.update(task_params)
-          redirect_to list_task_path(@task)
+          redirect_to @task
         else 
           render :edit 
         end
@@ -46,7 +51,7 @@ class TasksController < ApplicationController
       end
       
       def task_params
-        params.require(:task).permit(:name, :completed)
+        params.require(:task).permit(:name, :completed, :user_id)
       end
     end
     

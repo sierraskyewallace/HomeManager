@@ -1,20 +1,20 @@
-<h1> Your Group </h1>
+<h5> Your Group </h5>
 
 <% if current_user.owned_group.nil? %>
+
   <p> You don't have any groups. </p>
   <%= link_to 'New Group', new_group_path %>
-<% else %>
-  <ul>
-    <% current_user.owned_groups.each do |group| %>
-      <li><%= link_to group.name, group %></li>
-    <% end %>
-  </ul>
-<% end %>
-<br>
 
-<h1> Groups you are a member of </h1>
-<br>
-<% current_user.memberships.each do |g| %>
+<% else %>
+
+    <%= link_to current_user.owned_group.name %>
+    <% end %>
+
+<br><br>
+
+<h5> Groups you are a member of </h5>
+<br><br>
+<% current_user.groups.each do |g| %>
     <%= link_to g.name, group_path(g) %>
     <% end %>
 

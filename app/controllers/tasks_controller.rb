@@ -39,20 +39,13 @@ class TasksController < ApplicationController
       end
     
       def destroy
-        @task = Task.find_by(params[:id])
+        @task = Task.find_by_id(params[:id])
         @task.destroy
-        redirect_to list_path(@task, @list)
-      end
-
-      def complete
-        @user_tasks = Task.where(user_id: current_user.id)
-        @user_tasks = @user_tasks.find_by_id(params[:id])
-        @user_tasks.completed = true
-        @user_tasks.save
         redirect_to tasks_path
       end
 
     
+
       private
 
 

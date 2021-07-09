@@ -2,11 +2,13 @@
 <h1> Tasks Assigned To You </h1>
 
 
+
+
 <% @user_tasks.each do |t| %><br>
     <%= t.name %>
-    <%= t.completed %>
-    <%= link_to "Done", complete_task_path(t), method: :put %>
+    <%= link_to "Done", task_path(t), method: :delete %>
 <% end %>
+
 
 <br><br>
 

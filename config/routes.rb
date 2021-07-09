@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     resources :tasks 
       
     match '/tasks/complete/:id' => 'tasks#complete', as: 'complete_task', via: :put
+    match '/tasks/complete/:id' => 'tasks#incomplete', as: 'incomplete_task', via: :delete
 
   
 end

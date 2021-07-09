@@ -17,6 +17,13 @@ class User < ApplicationRecord
 
         validates :email, presence: true, uniqueness: true
 
+        #scope for user with most tasks
+        def self.most_tasks
+          User.select('users.*, count(tasks.id) as task_count').joins(:user_tasks).group('users.id').order('task_count DESC')
+        end
+
+
+
          def self.from_omniauth(auth)
           where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
           user.provider = auth.provider

@@ -8,9 +8,10 @@
 <br>
 <%= form_for @group do |f| %>
   <%= f.label :add_invited_members %>
-  <%= f.collection_select :user_id, User.invitation_accepted, :id, :email %><br>
-<%= f.submit 'Add Member', :class=>"btn btn-primary" %>
-<%= button_to 'Invite a Friend', new_user_invitation_path, :class=>"btn btn-primary" %>
+  <%= f.select :user_id, User.invitation_accepted.collect { |p| p.email }, include_blank: true  %><br>
+
+<%= f.submit 'Add Member', class: "btn btn-primary" %>
+<%= link_to 'Invite a Friend', new_user_invitation_path, :class => "btn btn-primary" %>
 <% end %>
 
 <br>
@@ -18,11 +19,11 @@
 <br>
 <div class="container">
 <h5> Members of <%= @group.name %> </h5>
-   <ul> <% @group.memberships.each do |m| %><br>
-       <li> <%= m.user.email %>
-        <%= link_to 'Delete Member', group_membership_path(@group, m), method: :delete %></li>
+   <% @group.memberships.each do |m| %><br>
+       <%= m.user.email %>
+        <%= link_to 'Delete Member', group_membership_path(@group, m), method: :delete %>
         <% end %>
-        </ul>
+  
         <br>
 
         

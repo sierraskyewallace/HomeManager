@@ -31,7 +31,8 @@ class GroupsController < ApplicationController
 
     def update
         @user = User.invitation_accepted
-        @group = Group.find(params[:id])
+        @group = Group.find_by_id(params[:id])
+
         @group.users << @user unless @group.users.include?(@user)
         if @group.update(group_params)
             flash[:success] = "Group updated"
@@ -43,10 +44,15 @@ class GroupsController < ApplicationController
     end
 
     def destroy
+        @group = Group.find(params[:id])
+        @group.destroy
+        redirect_to groups_path
     end
 
     def show
         @group = Group.find(params[:id])
+        
+        
     end
 
     private 

@@ -4,7 +4,7 @@
 <% if current_user.owned_group.nil? %>
 
   <p> You don't have any groups. </p>
-  <button type="button" class="btn btn-primary"><%= link_to 'New Group', new_group_path %></button>
+<%= link_to 'New Group', new_group_path, :class=>"btn btn-primary" %>
 
 <% else %>
 

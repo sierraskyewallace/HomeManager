@@ -6,6 +6,9 @@ class Group < ApplicationRecord
 
     accepts_nested_attributes_for :owner, :users
 
+    validates :name, presence: true, uniqueness: true
+    validates :owner, presence: true
+
     def owner?
         current_user.id == owner.id
     end

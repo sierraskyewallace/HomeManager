@@ -7,6 +7,7 @@ class TasksController < ApplicationController
       end
     
     def show 
+      @owned_group = current_user == owner
         @task = Task.find_by_id(params[:id])
       end
 

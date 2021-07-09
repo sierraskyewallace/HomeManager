@@ -1,22 +1,31 @@
-<h1> Your Owned Group </h1> 
+<div class="container">
 
-<%= @group.name %><br>
 
+<h4> Group | <%= @group.name %></h4>
+
+
+<br>
+<br>
 <%= form_for @group do |f| %>
   <%= f.label :add_invited_members %>
-  <%= f.collection_select :user_id, User.invitation_accepted, :id, :email %>
-<%= f.submit 'Add Member' %>
+  <%= f.collection_select :user_id, User.invitation_accepted, :id, :email %><br>
+<%= f.submit 'Add Member', :class=>"btn btn-primary" %>
+<%= button_to 'Invite a Friend', new_user_invitation_path, :class=>"btn btn-primary" %>
 <% end %>
-<%= link_to 'Invite a Friend', new_user_invitation_path %>
-<br>
 
 <br>
-    <% @group.memberships.each do |m| %><br>
-        <%= m.user.email %>
-        <%= link_to 'Delete Member', group_membership_path(@group, m), method: :delete %>
+</div>
+<br>
+<div class="container">
+<h5> Members of <%= @group.name %> </h5>
+   <ul> <% @group.memberships.each do |m| %><br>
+       <li> <%= m.user.email %>
+        <%= link_to 'Delete Member', group_membership_path(@group, m), method: :delete %></li>
         <% end %>
+        </ul>
         <br>
 
+        
     
 
 <br>
@@ -24,6 +33,8 @@
 
 <br>
 
-<%= link_to 'Back', groups_path %><br>
-<%= link_to 'Edit Group', edit_group_path(@group) %> <br>
-<%= link_to 'Delete Group', @group, method: :delete, data: { confirm: 'Are you sure?' } %>
+
+<%= link_to 'Edit Group', edit_group_path(@group) %> |
+<%= link_to 'Delete Group', @group, method: :delete, data: { confirm: 'Are you sure?' } %> |
+<%= link_to 'Back', groups_path %> 
+</div>

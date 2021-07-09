@@ -12,6 +12,8 @@ Rails.application.routes.draw do
 
     resources :tasks 
 
+    get 'user_tasks/most_tasks' => 'user_tasks#index' 
+
     
 
   

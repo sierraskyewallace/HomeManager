@@ -2,12 +2,11 @@ class TasksController < ApplicationController
   before_action :set_task
 
     def index
-        @group = current_user.groups
+        @user_tasks = Task.where(user_id: current_user.id)
         @tasks = Task.all
       end
     
     def show 
-      @owned_group = current_user == owner
         @task = Task.find_by_id(params[:id])
       end
 
@@ -44,8 +43,18 @@ class TasksController < ApplicationController
         @task.destroy
         redirect_to list_path(@task, @list)
       end
+
+      def complete
+        @user_tasks = Task.where(user_id: current_user.id)
+        @user_tasks = @user_tasks.find_by_id(params[:id])
+        @user_tasks.completed = true
+        @user_tasks.save
+        redirect_to tasks_path
+      end
+
     
       private
+
 
       def set_task 
         @task = Task.find_by_id(params[:id])

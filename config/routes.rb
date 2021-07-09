@@ -10,7 +10,9 @@ Rails.application.routes.draw do
   end
 
 
-    resources :tasks
+    resources :tasks 
+      
+    match '/tasks/complete/:id' => 'tasks#complete', as: 'complete_task', via: :put
 
   
 end

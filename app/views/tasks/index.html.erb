@@ -1,9 +1,11 @@
 
 <h1> Tasks Assigned To You </h1>
 
-<% current_user.tasks.each do |t| %>
-    <% t.name %>
-<%= button_to "Task Complete?", task_path(t), :method => "delete", :class => "destroy" %>
+
+<% @user_tasks.each do |t| %><br>
+    <%= t.name %>
+    <%= t.completed %>
+    <%= link_to "Done", complete_task_path(t), method: :put %>
 <% end %>
 
 <br><br>

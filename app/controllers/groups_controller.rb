@@ -1,13 +1,12 @@
 class GroupsController < ApplicationController
-    before_action :owner?, only: [:new, :create, :update, :edit, :destroy]
+    #before_action :owner?, only: [:new, :create, :update, :edit, :destroy]
+    before_action :set_group
 
     def index 
-        
+        @groups = current_user.groups
     end
 
     def edit 
-        
-        #@user = current_user
         @group = Group.find(params[:id])
     end
 

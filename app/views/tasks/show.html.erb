@@ -1,5 +1,5 @@
 <%= @task.name %><br>
 <%= @task.user.email %><br>
-<%= link_to 'Edit Task', edit_task_path(@task) %>
-<%= link_to 'Delete Task', task_path(@task), method: :delete %>
-<p> add edit and status and delete or something </p>
+<%= link_to 'Edit Task', edit_task_path(@task) %><br>
+<%= link_to 'Delete Task', task_path(@task), method: :delete %><br>
+<%= link_to 'Back', tasks_path %><br>

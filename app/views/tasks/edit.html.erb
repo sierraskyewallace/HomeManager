@@ -1,7 +1,7 @@
 <h1> Edit Task - <%= @task.name %> </h1>
 
 <%= form_for @task do |f| %>
-    <%= f.text_field :name, placeholder: "Create a task" %>
-    <%= f.collection_select :user_id, Group.users, :id, :name %>
-    <%= f. submit %>
-  <% end %>
+  <%= f.text_field :name, placeholder: "Create a task" %>
+  <%= f.collection_select :user_id, User.invitation_accepted, :id, :email, :prompt => "Select Group Member" %>
+  <%= f. submit %>
+<% end %>

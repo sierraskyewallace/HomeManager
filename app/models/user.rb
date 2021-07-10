@@ -9,13 +9,13 @@ class User < ApplicationRecord
   devise  :database_authenticatable, :registerable,
           :rememberable, :validatable, :omniauthable, :omniauth_providers => [:google_oauth2]
         
-        has_many :invitations, class_name: 'User', as: :invited_by
-        has_one :owned_group, class_name: 'Group', :foreign_key => 'owner_id'
         
         
+      has_many :group_memberships
+      has_many :groups, :through => :group_memberships
 
-        has_many :user_tasks
-        has_many :tasks, through: :user_tasks
+      has_many :user_tasks
+      has_many :tasks, through: :user_tasks
 
 
         validates :email, presence: true, uniqueness: true

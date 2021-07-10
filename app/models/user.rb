@@ -1,10 +1,12 @@
 class User < ApplicationRecord
+  include Invitation::User
+
   groupify :group_member
   groupify :named_group_member
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable, :recoverable,
-  devise  :database_authenticatable, :registerable, :invitable,
+  devise  :database_authenticatable, :registerable,
           :rememberable, :validatable, :omniauthable, :omniauth_providers => [:google_oauth2]
         
         has_many :invitations, class_name: 'User', as: :invited_by

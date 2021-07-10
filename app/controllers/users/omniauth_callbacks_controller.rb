@@ -1,7 +1,9 @@
 # frozen_string_literal: true
 
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
-
+  include Invitation::UserRegistration
+  before_action :set_invite_token, only: [:new]
+  after_action :process_invite_token, only: [:create]
   skip_before_action :verify_authenticity_token
   
   def google_oauth2

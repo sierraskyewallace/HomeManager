@@ -12,21 +12,6 @@
 
 ActiveRecord::Schema.define(version: 2021_07_09_000715) do
 
-  create_table "groups", force: :cascade do |t|
-    t.integer "owner_id"
-    t.string "name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.integer "user_id"
-  end
-
-  create_table "memberships", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "group_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "tasks", force: :cascade do |t|
     t.string "name"
     t.integer "user_id"
@@ -46,7 +31,6 @@ ActiveRecord::Schema.define(version: 2021_07_09_000715) do
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
-    t.integer "group_id"
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"

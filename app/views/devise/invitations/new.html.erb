@@ -3,6 +3,7 @@
 <%= form_for(resource, as: resource_name, url: invitation_path(resource_name), html: { method: :post }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
+  <%= f.hidden_field :group_id, value: resource.group_id if resource.group_id.present? %>
   <% resource.class.invite_key_fields.each do |field| -%>
     <div class="field">
       <%= f.label field %><br />

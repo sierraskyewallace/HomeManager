@@ -1,23 +1,24 @@
 class User < ApplicationRecord
-
+  groupify :group_member
+  groupify :named_group_member
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable, :recoverable,
   devise  :database_authenticatable, :registerable, :invitable,
           :rememberable, :validatable, :omniauthable, :omniauth_providers => [:google_oauth2]
-          
+        
+        has_many :invitations, class_name: 'User', as: :invited_by
         has_one :owned_group, class_name: 'Group', :foreign_key => 'owner_id'
         
-        has_many :memberships
-        has_many :groups, through: :memberships
         
+
         has_many :user_tasks
         has_many :tasks, through: :user_tasks
 
 
         validates :email, presence: true, uniqueness: true
 
-        #scope for user with most tasks
+  
         def self.most_tasks
           User.select('users.*, count(tasks.id) as task_count').joins(:user_tasks).group('users.id').order('task_count DESC')
         end

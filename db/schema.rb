@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 2021_07_10_011017) do
 
   create_table "groups", force: :cascade do |t|
     t.string "type"
+    t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

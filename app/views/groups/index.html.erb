@@ -6,6 +6,12 @@
 
     <h5> Groups you are a amember of </h5>
 
+<% @memberships.each do |g| %><br>
+    <%= link_to g.group.name, g.group %>
+    <% end %>
+
+    
+
    <p> maybe add here groups user is member of????</h5><br>
 
 <%= link_to "New Group", new_group_path %>

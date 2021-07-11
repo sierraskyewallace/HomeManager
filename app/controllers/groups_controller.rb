@@ -2,7 +2,7 @@ class GroupsController < ApplicationController
 
     def index 
         @groups = Group.all
-        #show groups current user is a member of
+        @memberships = current_user.group_memberships
         @groups = @groups.where(:user_id => current_user.id)
     end
 

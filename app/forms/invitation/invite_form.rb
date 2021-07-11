@@ -5,7 +5,7 @@ module Invitation
   class InviteForm
     include ActiveModel::Model
 
-    attr_accessor :invitable_id, :invitable_type, :email, :emails
+    attr_accessor :invitable_id, :invitable_type, :email, :emails, :group_id
     attr_reader :invitable
 
     def self.model_name # form masquerades as 'invite'

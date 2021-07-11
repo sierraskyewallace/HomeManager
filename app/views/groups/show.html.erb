@@ -1,5 +1,9 @@
 <h5> Your Group - <%= @group.name %></h5><br>
 
+<% @group.users.each do |user| %>
+    <%= user.email %><br>
+    <% end %><br>
+
 <%= link_to 'invite a friend', 
 new_group_invite_path(@group,invite: { invitable_id: @group.id, invitable_type: 'Group' } ) %><br>
 

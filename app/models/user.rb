@@ -8,7 +8,7 @@ class User < ApplicationRecord
   devise  :database_authenticatable, :registerable,
           :rememberable, :validatable, :omniauthable, :omniauth_providers => [:google_oauth2]
         
-        
+      
       has_many :owned_groups, :class_name => "Group", :foreign_key => "owner_id"
       has_many :group_memberships
       has_many :groups, :through => :group_memberships
@@ -19,7 +19,7 @@ class User < ApplicationRecord
 
         validates :email, presence: true, uniqueness: true
 
-  
+   # accepts_nested_attributes_for :group_memberships 
         def self.most_tasks
           User.select('users.*, count(tasks.id) as task_count').joins(:user_tasks).group('users.id').order('task_count DESC')
         end

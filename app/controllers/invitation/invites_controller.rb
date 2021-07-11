@@ -26,6 +26,7 @@ module Invitation
     #   invite: { invitable_id, invitable_type, email or emails:[] }
     #
     def create
+      @group = Group.find_by_id(params[:id])
       failures = []
       invites = InviteForm.new(invite_params).build_invites(current_user)
       ActiveRecord::Base.transaction do
@@ -69,6 +70,7 @@ module Invitation
     # Override if you want to do something more complicated for new users.
     # By default we don't do anything extra.
     def after_invite_new_user(invite)
+      
     end
 
     # After an invite is created, redirect the user here.
@@ -78,7 +80,7 @@ module Invitation
     end
 
     def invite_params
-      params[:invite] ? params.require(:invite).permit(:invitable_id, :invitable_type, :email, emails: []) : {}
+      params[:invite] ? params.require(:invite).permit(:invitable_id, :group_id, :invitable_type, :email, emails: []) : {}
     end
 
     # Invite user by sending email.

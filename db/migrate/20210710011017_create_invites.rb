@@ -7,7 +7,7 @@ class CreateInvites < ActiveRecord::Migration[6.1]
       t.integer :recipient_id
       t.integer :invitable_id
       t.string  :invitable_type
-      t.integer :group_membership_id
+      t.integer :group_id
       t.timestamps
       t.index :email
       t.index :token

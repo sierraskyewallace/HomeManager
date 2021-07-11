@@ -1,5 +1,5 @@
 class Task < ApplicationRecord
-    groupify :group_member
+
     belongs_to :user
     has_many :user_tasks
     has_many :users, through: :user_tasks

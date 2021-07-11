@@ -1,8 +1,7 @@
 class User < ApplicationRecord
   include Invitation::User
 
-  groupify :group_member
-  groupify :named_group_member
+
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable, :recoverable,

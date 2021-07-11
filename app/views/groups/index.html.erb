@@ -1,3 +1,7 @@
 <h5> All Groups you belong to </h5>
 
+<% current_user.owned_groups.each do |g| %><br>
+    <%= link_to g.name, g %>
+    <% end %>
+
 <%= link_to "New Group", new_group_path %>

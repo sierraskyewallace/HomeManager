@@ -2,9 +2,11 @@ class GroupsController < ApplicationController
 
     def index 
         @groups = Group.all
+        #@groups = current_user.groups
     end
 
     def show 
+        @group = Group.find_by_id(params[:id])
     end
 
     def new 
@@ -13,7 +15,8 @@ class GroupsController < ApplicationController
 
     def create 
         @group = current_user.groups.build(group_params)
-        if @group.save
+        @group.owner = current_user
+        if @group.save!
             redirect_to @group
             flash[:notice] = "Group was successfully created."
         else
@@ -39,6 +42,6 @@ class GroupsController < ApplicationController
     end
 
     def group_params 
-        params.require(:group).permit(:name, :type)
+        params.require(:group).permit(:name, :type, :user_id)
     end
 end

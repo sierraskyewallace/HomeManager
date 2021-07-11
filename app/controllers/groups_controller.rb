@@ -2,7 +2,8 @@ class GroupsController < ApplicationController
 
     def index 
         @groups = Group.all
-        #@groups = current_user.groups
+        #show groups current user is a member of
+        @groups = @groups.where(:user_id => current_user.id)
     end
 
     def show 
@@ -26,12 +27,26 @@ class GroupsController < ApplicationController
     end
 
     def edit 
+        @group = Group.find_by_id(params[:id])
     end
 
     def update
+        @group = Group.find_by_id(params[:id])
+        if @group.update(group_params)
+            redirect_to @group
+            flash[:notice] = "Group was successfully updated."
+        else
+            flash[:error] = "Group could not be updated."
+            render :edit
+        end
     end
 
     def destroy 
+        @group = Group.find_by_id(params[:id])
+        @group.destroy
+
+        redirect_to groups_path
+
     end
 
 

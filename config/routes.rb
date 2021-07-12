@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   
   root to: "sessions#home"
 
-  devise_for :users, :controllers => {omniauth_callbacks: "users/omniauth_callbacks" } 
+  devise_for :users, :controllers => {omniauth_callbacks: "users/omniauth_callbacks", registrations: 'users' } 
 
   resources :groups do 
     resources :invites, controller: 'invitation/invites', only: [:new, :create]

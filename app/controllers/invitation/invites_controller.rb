@@ -16,7 +16,6 @@ module Invitation
     
     def new
       @group = Group.find(params[:group_id])
-      #@membership = @group.memberships.new
       @invite = InviteForm.new(invite_params)
       render template: 'invites/new'
     end
@@ -26,9 +25,10 @@ module Invitation
     #   invite: { invitable_id, invitable_type, email or emails:[] }
     #
     def create
-      @group = Group.find_by_id(params[:id])
+      @group = Group.find(params[:group_id])
       failures = []
       invites = InviteForm.new(invite_params).build_invites(current_user)
+
       ActiveRecord::Base.transaction do
         invites.each { |invite| invite.save ? do_invite(invite) : failures << invite.email }
       end
@@ -40,7 +40,7 @@ module Invitation
           else
             flash[:error] = t('invitation.flash.invite_error', count: failures.count, email: failures.to_sentence)
           end
-          redirect_to url_after_invite(invites.first) # FIXME: redirect to back
+          redirect_to url_after_invite(invites.first)
         end
         format.json do
           if failures.empty?
@@ -70,7 +70,8 @@ module Invitation
     # Override if you want to do something more complicated for new users.
     # By default we don't do anything extra.
     def after_invite_new_user(invite)
-      
+      # Add the user to the invitable resource/organization
+
     end
 
     # After an invite is created, redirect the user here.

@@ -4,5 +4,7 @@ class Group < ApplicationRecord
     has_many :users, through: :group_memberships, dependent: :destroy
     belongs_to :owner, class_name: "User"
 
+    has_many :invites
+
     accepts_nested_attributes_for :users, :invites
 end

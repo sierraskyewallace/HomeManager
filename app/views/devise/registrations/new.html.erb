@@ -9,7 +9,10 @@
   </div>
 
 
-    <%= f.hidden_field :invite_token, value: @invite %>
+  <%= f.hidden_field :group_id, value: @group %>
+  <%= f.hidden_field :invite_token, value: @invite_token if @invite_token.present? %>
+
+
 
 
     

@@ -11,11 +11,8 @@ class TasksController < ApplicationController
       end
 
       def new 
-        @group = current_user.groups
-        @group = @group.users 
-        
-
-        @task = Task.new
+        @group = Group.find_by_invite_token(params[:group_invite_token])
+         @task = Task.new
       end
       
       def create

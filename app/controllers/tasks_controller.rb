@@ -12,6 +12,9 @@ class TasksController < ApplicationController
 
       def new 
         @group = current_user.groups
+        @group = @group.users 
+        
+
         @task = Task.new
       end
       

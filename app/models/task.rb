@@ -1,8 +1,9 @@
 class Task < ApplicationRecord
+    belongs_to :group_membership
+    #belongs_to :user
+    #belongs_to :group
 
-    belongs_to :user
-    has_many :user_tasks
-    has_many :users, through: :user_tasks
+
 
     validates :name, presence: true
     validates :user_id , presence: true

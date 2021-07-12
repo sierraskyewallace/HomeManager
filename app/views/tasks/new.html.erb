@@ -1,7 +1,11 @@
 <h1> New Task </h1>
 
-<%= form_for @task do |f| %>
+<%= form_for [@group,@task], url: group_tasks_path do |f| %>
     <%= f.text_field :name, placeholder: "Create a task" %>
-    <%= f.collection_select :user_id, User.invitation_accepted, :id, :email, :prompt => "Select Group Member" %>
-    <%= f. submit %>
-  <% end %>
+    #show collection of group members 
+    <%= f.collection_select :group_membership_id, GroupMembership.all, :id, :email, :id, :name %>
+
+
+
+    <%= f.submit "Create" %>
+<% end %>

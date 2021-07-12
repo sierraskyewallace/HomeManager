@@ -10,16 +10,14 @@ class User < ApplicationRecord
         
       
       has_many :group_memberships, dependent: :destroy
-      has_many :groups, :through => :group_memberships
-
-      has_many :user_tasks
-      has_many :tasks, through: :user_tasks
-
+      has_many :groups, through: :group_memberships
+      #belongs_to :group
+      has_many :tasks
 
 
         validates :email, presence: true, uniqueness: true
 
-   # accepts_nested_attributes_for :group_memberships 
+
         def self.most_tasks
           User.select('users.*, count(tasks.id) as task_count').joins(:user_tasks).group('users.id').order('task_count DESC')
         end

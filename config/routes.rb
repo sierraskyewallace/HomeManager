@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   resources :groups, param: :invite_token do 
     resources :group_memberships, only: [:new, :create]
     resource :invite_link, only: :show
-    #resources :tasks 
+    resources :tasks 
   end
 
   #resources :group_memberships

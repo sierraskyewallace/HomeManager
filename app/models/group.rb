@@ -1,8 +1,13 @@
 class Group < ApplicationRecord
     has_secure_token :invite_token
+    
     has_many :group_memberships, dependent: :destroy
     has_many :users, through: :group_memberships
+    #has_many :tasks
 
+    def members 
+   
+    end
 
     def member?(user)
         users.include?(user)
@@ -11,7 +16,6 @@ class Group < ApplicationRecord
     def to_param 
         invite_token
     end
-    #has_many :invites
 
-    #accepts_nested_attributes_for :users, :invites
+
 end

@@ -8,8 +8,8 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.1]
       t.string :email,              null: false, default: ""
       t.string :encrypted_password, null: false, default: ""
       #t.string :first_name
-      t.integer :group_id
-      t.integer :invite_token
+      #t.integer :group_id
+      #t.integer :invite_token
       
 
       ## Recoverable

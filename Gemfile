@@ -27,7 +27,7 @@ gem 'devise'
 gem 'omniauth'
 gem 'dotenv-rails'
 #gem 'devise_invitable', '~> 2.0.0'
-gem 'invitation'
+#gem 'invitation'
 #gem 'groupify'
 
 # Use Active Storage variant

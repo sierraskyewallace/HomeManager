@@ -1,17 +1,11 @@
-<h5> All Groups you belong to </h5>
 
-<% current_user.owned_groups.each do |g| %><br>
-    <%= link_to g.name, g %>
-    <% end %>
 
-    <h5> Groups you are a amember of </h5>
+    <h3> Your Groups </h3>
 
-<% @memberships.each do |g| %><br>
-    <%= link_to g.group.name, g.group %>
-    <% end %>
+    <% current_user.groups.each do |group| %>
+        <%= link_to group.name, group %>
+        <% end %><br><br>
+
+        <%= link_to 'Create Group', new_group_path %>
 
     
-
-   <p> maybe add here groups user is member of????</h5><br>
-
-<%= link_to "New Group", new_group_path %>

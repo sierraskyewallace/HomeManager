@@ -8,9 +8,7 @@
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
 
-
-  <%= f.hidden_field :group_id, value: @group %>
-  <%= f.hidden_field :invite_token, value: @invite_token if @invite_token.present? %>
+  <%= f.hidden_field :invite_token, value: @group.invite_token if @group %>
 
 
 

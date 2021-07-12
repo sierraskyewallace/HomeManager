@@ -1,14 +1,13 @@
 class GroupsController < ApplicationController
 
-    def index 
-        @groups = Group.all
-        @memberships = current_user.group_memberships
-        @groups = @groups.where(:user_id => current_user.id)
-    end
-
-    def show 
-        @group = Group.find_by_id(params[:id])
-    end
+    def index
+        @groups = current_user.groups
+      end
+    
+      def show
+        @group = Group.find_by(params[:group_id])
+        #@group = Group.find_by_invite_token(params[:invite_token])
+      end
 
     def new 
         @group = current_user.groups.build

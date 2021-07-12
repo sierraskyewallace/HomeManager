@@ -1,11 +1,9 @@
 <h5> Your Group - <%= @group.name %></h5><br>
 
-<% @group.users.each do |user| %>
-    <%= user.email %><br>
-    <% end %><br>
-
-<%= link_to 'invite a friend', 
-new_group_invite_path(@group,invite: { invitable_id: @group.id, invitable_type: 'Group' } ) %><br>
-
-<%= link_to 'Edit Group', edit_group_path(@group) %><br>
-<%= link_to 'Delete Group', @group, method: :delete %><br>
+                <h5>Invite Link:</h5>
+                <input class="group-url" id="cb-link-field" type="text" value="<%= new_group_group_membership_url(@group) %>" data-target="invite.url" data-group-token="<%= @group.invite_token %>"/>
+                <div class="card-body__btns mt-2">
+                  <button id="regenerate-btn" class="btn btn-outline-primary" data-action="click->invite#regenerate">Regenerate</button>
+                  <button class="btn btn-primary" data-action="click->invite#copy">Copy Link</button>
+                </div>
+        

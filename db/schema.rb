@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 2021_07_11_211932) do
   create_table "groups", force: :cascade do |t|
     t.string "name"
     t.string "invite_token"
+    t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["invite_token"], name: "index_groups_on_invite_token", unique: true

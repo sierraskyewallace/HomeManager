@@ -14,7 +14,7 @@ class GroupsController < ApplicationController
 
     def create 
         @group = current_user.groups.build(group_params)
-        
+        @group.group_memberships.build(user_id: current_user.id)
         if @group.save!
             redirect_to @group
             flash[:notice] = "Group was successfully created."
@@ -25,11 +25,11 @@ class GroupsController < ApplicationController
     end
 
     def edit 
-        @group = Group.find_by_id(params[:id])
+        @group = Group.find_by_invite_token(params[:invite_token])
     end
 
     def update
-        @group = Group.find_by_id(params[:id])
+        @group = Group.find_by_invite_token(params[:invite_token])
         if @group.update(group_params)
             redirect_to @group
             flash[:notice] = "Group was successfully updated."
@@ -40,7 +40,7 @@ class GroupsController < ApplicationController
     end
 
     def destroy 
-        @group = Group.find_by_id(params[:id])
+        @group = Group.find_by_invite_token(params[:invite_token])
         @group.destroy
 
         redirect_to groups_path

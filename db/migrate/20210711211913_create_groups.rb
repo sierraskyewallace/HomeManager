@@ -1,11 +1,11 @@
 class CreateGroups < ActiveRecord::Migration[6.1]
   def change
     create_table :groups do |t|
-      t.integer :owner_id
-      t.integer :user_id
-      t.integer :invite_token
       t.string :name
+      t.string :invite_token
+
       t.timestamps
     end
+    add_index :groups, :invite_token, unique: true
   end
 end

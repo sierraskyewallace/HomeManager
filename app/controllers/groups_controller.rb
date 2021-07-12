@@ -5,8 +5,7 @@ class GroupsController < ApplicationController
       end
     
       def show
-        @group = Group.find_by(params[:group_id])
-        #@group = Group.find_by_invite_token(params[:invite_token])
+        @group = Group.find_by_invite_token(params[:invite_token])
       end
 
     def new 
@@ -15,7 +14,7 @@ class GroupsController < ApplicationController
 
     def create 
         @group = current_user.groups.build(group_params)
-        @group.owner = current_user
+        
         if @group.save!
             redirect_to @group
             flash[:notice] = "Group was successfully created."

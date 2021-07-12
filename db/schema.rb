@@ -13,8 +13,8 @@
 ActiveRecord::Schema.define(version: 2021_07_11_211932) do
 
   create_table "group_memberships", force: :cascade do |t|
-    t.integer "group_id"
-    t.integer "user_id"
+    t.integer "user_id", null: false
+    t.integer "group_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["group_id"], name: "index_group_memberships_on_group_id"
@@ -22,12 +22,11 @@ ActiveRecord::Schema.define(version: 2021_07_11_211932) do
   end
 
   create_table "groups", force: :cascade do |t|
-    t.integer "owner_id"
-    t.integer "user_id"
-    t.integer "invite_token"
     t.string "name"
+    t.string "invite_token"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["invite_token"], name: "index_groups_on_invite_token", unique: true
   end
 
   create_table "tasks", force: :cascade do |t|

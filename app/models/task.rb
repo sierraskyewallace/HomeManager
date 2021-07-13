@@ -1,7 +1,6 @@
 class Task < ApplicationRecord
-    belongs_to :group_membership
-    #belongs_to :user
-    #belongs_to :group
+    belongs_to :user
+
 
 
 

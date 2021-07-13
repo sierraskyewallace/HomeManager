@@ -10,7 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_11_211932) do
+ActiveRecord::Schema.define(version: 2021_07_12_235544) do
+
+  create_table "group_membership_tasks", force: :cascade do |t|
+    t.integer "group_membership_id"
+    t.integer "task_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "group_memberships", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -36,6 +43,7 @@ ActiveRecord::Schema.define(version: 2021_07_11_211932) do
     t.boolean "completed"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "group_membership_id"
   end
 
   create_table "users", force: :cascade do |t|

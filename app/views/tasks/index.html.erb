@@ -10,9 +10,8 @@
 <h1> Assign a Task to a Group Member </h1>
 <%= link_to 'Assign Tasks', new_group_task_path %><br>
 
-<% @tasks.each do |t| %><br>
-    <%= link_to t.name, group_task_path(@group,t) %>
-    <%= t.email %>
+
+<% @user.tasks.each do |task| %><br>
+    <%= link_to task.name, group_task_path(@user, task) %>
+    <%=  task.user.email %>
     <% end %>
-
-

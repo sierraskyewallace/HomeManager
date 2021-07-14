@@ -1,11 +1,10 @@
 class Task < ApplicationRecord
     belongs_to :user
+   
 
-
-
+    
 
     validates :name, presence: true
-    validates :user_id , presence: true
 
     scope :completed, -> { where(completed: true) }
     scope :incomplete, -> { where(completed: false) }

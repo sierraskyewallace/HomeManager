@@ -9,13 +9,13 @@ class User < ApplicationRecord
           :rememberable, :validatable, :omniauthable, :omniauth_providers => [:google_oauth2]
         
       
+       
       has_many :group_memberships, dependent: :destroy
       has_many :groups, through: :group_memberships
-      
-      has_many :tasks, through: :group_memberships
 
+      has_many :tasks
 
-        validates :email, presence: true, uniqueness: true
+      validates :email, presence: true, uniqueness: true
 
 
         

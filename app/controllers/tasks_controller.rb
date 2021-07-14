@@ -3,11 +3,12 @@ class TasksController < ApplicationController
   
 
     def index
-        #show all tasks for this group
         @group = Group.find_by(params[:invite_token])
-        @group_membership = GroupMembership.find_by(group_id: @group.id, user_id: current_user.id)
-        @tasks = @group_membership.tasks
+        @user = @group.users.find_by(params[:user_id])
+        @tasks = @user.tasks
         
+
+
       end
     
     def show 
@@ -16,18 +17,16 @@ class TasksController < ApplicationController
 
       def new 
         @group = Group.find_by(params[:invite_token])
-        @group_membership = GroupMembership.find_by(group_id: @group.id, user_id: current_user.id)
-        @task = @group_membership.tasks.build
-        
+        @task = @group.tasks.build
       end
       
       def create
         @group = Group.find_by(params[:invite_token])
-        @group_membership = GroupMembership.find_by(group_id: @group.id, user_id: current_user.id)
-        @task = @group_membership.tasks.build(task_params)
-
-        if @task.save
-          redirect_to group_tasks_path(@group)
+        @task = @group.tasks.build(task_params)
+        
+         if @task.save!  
+          #redirect to the group page
+          redirect_to @group
         else
           render 'new'
         end
@@ -62,7 +61,7 @@ class TasksController < ApplicationController
       end
       
       def task_params
-        params.require(:task).permit(:name, :user_id)
+        params.require(:task).permit(:name, :user_id, group_membership_attributes: [:id, :group_id, :user_id])
       end
     end
     

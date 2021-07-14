@@ -1,4 +1,3 @@
 <%= @task.name %>
-<%= link_to 'Edit Task', edit_task_path(@task) %><br>
-<%= link_to 'Delete Task', task_path(@task), method: :delete %><br>
-<%= link_to 'Back', tasks_path %><br>
+<%= @task.user.email %>
+<%= link_to 'Back', group_tasks_path %><br>

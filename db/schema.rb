@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_14_002419) do
+ActiveRecord::Schema.define(version: 2021_07_14_214537) do
 
   create_table "group_memberships", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 2021_07_14_002419) do
 
   create_table "tasks", force: :cascade do |t|
     t.string "name"
+    t.integer "group_id"
     t.integer "user_id"
     t.boolean "completed", default: false
     t.datetime "created_at", precision: 6, null: false
@@ -39,10 +40,12 @@ ActiveRecord::Schema.define(version: 2021_07_14_002419) do
   end
 
   create_table "user_tasks", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "task_id"
+    t.integer "user_id", null: false
+    t.integer "task_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["task_id"], name: "index_user_tasks_on_task_id"
+    t.index ["user_id"], name: "index_user_tasks_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

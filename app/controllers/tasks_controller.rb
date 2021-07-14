@@ -3,30 +3,31 @@ class TasksController < ApplicationController
   
 
     def index
-        @group = Group.find_by(params[:invite_token])
-        @user = @group.users.find_by(params[:user_id])
-        @tasks = @user.tasks
-        
-
-
-      end
+          @group = Group.find_by(params[:invite_token])
+          @tasks = @group.tasks
+    end
     
     def show 
         @task = Task.find_by_id(params[:id])
+        @users = User.find_by_id(params[:user_id])
       end
 
       def new 
         @group = Group.find_by(params[:invite_token])
-        @task = @group.tasks.build
+        @user = User.find_by(params[:user_id])
+        @task = @user.tasks.build
+
+        
       end
       
       def create
         @group = Group.find_by(params[:invite_token])
-        @task = @group.tasks.build(task_params)
+        @user = User.find_by(params[:user_id])
+        @task = @user.tasks.build(task_params)
         
          if @task.save!  
-          #redirect to the group page
-          redirect_to @group
+      
+          redirect_to group_task_path(@group, @task)
         else
           render 'new'
         end
@@ -61,7 +62,7 @@ class TasksController < ApplicationController
       end
       
       def task_params
-        params.require(:task).permit(:name, :user_id, group_membership_attributes: [:id, :group_id, :user_id])
+        params.require(:task).permit(:name, :user_id, users_attributes: [:id, :email, :_destroy])
       end
     end
     

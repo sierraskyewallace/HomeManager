@@ -1,9 +1,8 @@
 class Task < ApplicationRecord
     belongs_to :user
-   
-
+    has_many :user_tasks
     
-
+  accepts_nested_attributes_for :user
     validates :name, presence: true
 
     scope :completed, -> { where(completed: true) }

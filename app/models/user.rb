@@ -8,12 +8,12 @@ class User < ApplicationRecord
   devise  :database_authenticatable, :registerable,
           :rememberable, :validatable, :omniauthable, :omniauth_providers => [:google_oauth2]
         
-      
-       
+      has_many :user_tasks
+      has_many :tasks, through: :user_tasks
       has_many :group_memberships, dependent: :destroy
       has_many :groups, through: :group_memberships
 
-      has_many :tasks
+      
 
       validates :email, presence: true, uniqueness: true
 

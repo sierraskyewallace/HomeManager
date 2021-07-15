@@ -32,22 +32,25 @@ class TasksController < ApplicationController
       end
       
       def edit
+        @group = Group.find_by(params[:invite_token])
         @task = Task.find_by(params[:id])
       end
 
       def update 
+        @group = Group.find_by(params[:invite_token])
         @task = Task.find_by(params[:id])
         if @task.update(task_params)
-          redirect_to @task
+          redirect_to group_task_path(@group, @task)
         else 
           render :edit 
         end
       end
     
       def destroy
+        @group = Group.find_by(params[:invite_token])
         @task = Task.find_by_id(params[:id])
         @task.destroy
-        redirect_to tasks_path
+        redirect_to group_tasks_path(@group, @task)
       end
 
     

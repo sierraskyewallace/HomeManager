@@ -1,14 +1,13 @@
 <div class="container">
 <% if user_signed_in? %>
-    <h3> Welcome, <%= current_user.email if !current_user.nil? %></h3><br>
-    
+    <h3> Welcome, <%= current_user.email if !current_user.nil? %></h3>
+    <p>Keep track of your family's chores and tasks!</p>
    
-    
-
-    
+   
    
     <br><br>
-    <%= link_to 'Groups', groups_path %><br>
+    <%= link_to 'My Groups', groups_path %><br>
+    <%= link_to 'Create a Group', new_group_path %><br>
    
     <br><br>
     
@@ -18,3 +17,7 @@
 
     <% end %>
     </div>
+
+    <br>
+
+    

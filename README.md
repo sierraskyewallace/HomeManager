@@ -1,24 +1,24 @@
-# README
+HomeManager 
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A Rails API for managing you and your family's home. A user can:
 
-Things you may want to cover:
+* Create an account with Devise or through Google OAuth
+* Create a Group
+* Add members to that group using a unique invite link url
+* Assign tasks to members of that group
+* Members can change status of tasks to completed
 
-* Ruby version
+-----------------------------------------------
 
-* System dependencies
+Usage 
 
-* Configuration
+    * Clone this repo
+    * Run `bundle install`
+    * Run `rails s`
 
-* Database creation
+------------------------------------------------
 
-* Database initialization
+LICENSE
 
-* How to run the test suite
+This project is licensed under the MIT License - see the LICENSE.md file for details
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...

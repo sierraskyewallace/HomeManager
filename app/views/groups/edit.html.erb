@@ -2,6 +2,6 @@
 
 <%= form_for @group do |f| %>
     <%= f.label :name %><br />
-    <%= f.text_field :name %>
+    <%= f.text_field :name, :required => true %>
     <%= f.submit %>
     <% end %>

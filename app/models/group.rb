@@ -7,7 +7,9 @@ class Group < ApplicationRecord
     has_many :tasks
     
    
-
+    validates :name, presence: true, uniqueness: true
+    validates :invite_token, presence: true, uniqueness: true
+    
     def member?(user)
         users.include?(user)
     end

@@ -1,6 +1,7 @@
 <div class="container">
 
-<h5><%= @task.name %></h5>
+
+<h5>Task | <%= @task.name %></h5>
 <%= @task.user.email %>
 <br>
 <%= link_to 'Delete', group_task_path(@group,@task), method: :delete %><br>

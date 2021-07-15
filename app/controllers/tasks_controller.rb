@@ -6,7 +6,6 @@ class TasksController < ApplicationController
     def index
         @tasks = @group.tasks
         @user_tasks = @group.tasks.where(user_id: current_user.id)
-     
     end
     
     def show 

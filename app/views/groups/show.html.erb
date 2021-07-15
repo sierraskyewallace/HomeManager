@@ -13,11 +13,14 @@
                 </div>
               </div>
 
+              <h5> Members</h5>
+
              <ul> <% @group.group_memberships.each do |g| %>
               <li>  <%= g.user.email %>
                 <% end %></li>
                 </ul>
 
-<%= link_to 'Group Tasks', group_tasks_path(@group) %>
+<%= link_to 'Group Tasks', group_tasks_path(@group), class: "btn btn-primary" %>
+<%= link_to 'Back', groups_path, class: "btn btn-primary" %>
 
         

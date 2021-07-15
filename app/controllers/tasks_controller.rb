@@ -5,7 +5,7 @@ class TasksController < ApplicationController
     def index
         @group = Group.find_by(params[:invite_token])
         @tasks = @group.tasks
-        @user_tasks = current_user.tasks
+        @user_tasks = @group.tasks.where(user_id: current_user.id)
     end
     
     def show 

@@ -3,12 +3,14 @@
 <%= link_to 'Assign Tasks', new_group_task_path %><br><br>
 
 <br>
-<h5> Your Tasks: </h5>
- 
-<% @user_tasks.each do |t| %>
-    <%= link_to t.name, group_task_path(@group,t) %><br>
+
+<h5> Your Tasks </h5>
+<% @user_tasks.each do |task| %>
+    <%= link_to task.name, group_task_path(@group,task) %><br>
     <% end %>
+
     <br><br>
+
 
 <h5> Group Tasks: </h5>
 

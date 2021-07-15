@@ -6,6 +6,7 @@ class TasksController < ApplicationController
     def index
         @tasks = @group.tasks
         @user_tasks = @group.tasks.where(user_id: current_user.id)
+     
     end
     
     def show 
@@ -47,7 +48,8 @@ class TasksController < ApplicationController
         redirect_to group_tasks_path(@group, @task)
       end
 
-    
+      
+  
 
       private
 
@@ -60,7 +62,7 @@ class TasksController < ApplicationController
       end
       
       def task_params
-        params.require(:task).permit(:name, :user_id, users_attributes: [:id, :email, :_destroy])
+        params.require(:task).permit(:name, :completed, :user_id, users_attributes: [:id, :email, :_destroy])
       end
     end
     

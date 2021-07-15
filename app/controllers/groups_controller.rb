@@ -1,11 +1,11 @@
 class GroupsController < ApplicationController
-
+    before_action :set_group
     def index
         @groups = current_user.groups
       end
     
       def show
-        @group = Group.find_by_invite_token(params[:invite_token])
+
       end
 
     def new 
@@ -25,11 +25,10 @@ class GroupsController < ApplicationController
     end
 
     def edit 
-        @group = Group.find_by_invite_token(params[:invite_token])
+
     end
 
     def update
-        @group = Group.find_by_invite_token(params[:invite_token])
         if @group.update(group_params)
             redirect_to @group
             flash[:notice] = "Group was successfully updated."
@@ -40,9 +39,7 @@ class GroupsController < ApplicationController
     end
 
     def destroy 
-        @group = Group.find_by_invite_token(params[:invite_token])
         @group.destroy
-
         redirect_to groups_path
 
     end
@@ -51,7 +48,7 @@ class GroupsController < ApplicationController
     private 
 
     def set_group 
-        @group = Group.find_by_id(params[:group_id])
+        @group = Group.find_by_invite_token(params[:invite_token])
     end
 
     def group_params 

@@ -3,10 +3,6 @@
 <%= form_for [@group,@task], url: group_tasks_path do |f| %>
     <%= f.label :name %>
     <%= f.text_field :name, :required => true %>
-    
     <%= f.collection_select :user_id, @group.users, :id, :email, :prompt => 'Assign to a User', :required => true %>
-
-
-
     <%= f.submit "Create" %>
 <% end %>

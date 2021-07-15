@@ -19,8 +19,10 @@ class TasksController < ApplicationController
       def create
         @task = @group.tasks.create(task_params)
          if @task.save  
+          flash[:success] = "Task was successfully created."
           redirect_to group_task_path(@group, @task)
         else
+          flash[:danger] = "Task could not be created."
           render 'new'
         end
       end
@@ -31,14 +33,17 @@ class TasksController < ApplicationController
       def update 
         @task = Task.find_by(params[:id])
         if @task.update(task_params)
+          flash[:success] = "Task was successfully updated."
           redirect_to group_task_path(@group, @task)
         else 
+          flash[:danger] = "Task could not be updated."
           render :edit 
         end
       end
     
       def destroy
         @task.destroy
+        flash[:success] = "Task was successfully deleted."
         redirect_to group_tasks_path(@group, @task)
       end
 

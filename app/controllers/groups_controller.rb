@@ -15,7 +15,7 @@ class GroupsController < ApplicationController
     def create 
         @group = current_user.groups.build(group_params)
         @group.group_memberships.build(user_id: current_user.id)
-        if @group.save!
+        if @group.save
             redirect_to @group
             flash[:success] = "Group was successfully created."
         else
@@ -31,15 +31,16 @@ class GroupsController < ApplicationController
     def update
         if @group.update(group_params)
             redirect_to @group
-            flash[:danger] = "Group was successfully updated."
+            flash[:success] = "Group was successfully updated."
         else
-            flash[:error] = "Group could not be updated."
+            flash[:danger] = "Group could not be updated."
             render :edit
         end
     end
 
     def destroy 
         @group.destroy
+        flash[:success] = "Group was successfully deleted."
         redirect_to groups_path
 
     end

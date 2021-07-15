@@ -5,7 +5,15 @@
 <br>
 <h5> Your Tasks: </h5>
  
-<% current_user.tasks.each do |t| %>
+<% @user_tasks.each do |t| %>
     <%= link_to t.name, group_task_path(@group,t) %><br>
+    <% end %>
+    <br><br>
+
+<h5> Group Tasks: </h5>
+
+<% @group.tasks.each do |t| %>
+    <%= link_to t.name, group_task_path(@group,t) %>
+    <%= t.user.email %><br>
     <% end %>
 

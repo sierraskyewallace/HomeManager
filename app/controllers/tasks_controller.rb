@@ -3,8 +3,9 @@ class TasksController < ApplicationController
   
 
     def index
-          @group = Group.find_by(params[:invite_token])
-          @tasks = @group.tasks
+        @group = Group.find_by(params[:invite_token])
+        @tasks = @group.tasks
+        @user_tasks = current_user.tasks
     end
     
     def show 
@@ -14,17 +15,14 @@ class TasksController < ApplicationController
 
       def new 
         @group = Group.find_by(params[:invite_token])
-        @user = User.find_by(params[:user_id])
-        @task = @user.tasks.build
+        @task = @group.tasks.create
 
         
       end
       
       def create
         @group = Group.find_by(params[:invite_token])
-        @user = User.find_by(params[:user_id])
-        @task = @user.tasks.build(task_params)
-        
+        @task = @group.tasks.create(task_params)
          if @task.save!  
       
           redirect_to group_task_path(@group, @task)

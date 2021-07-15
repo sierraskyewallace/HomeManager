@@ -18,8 +18,7 @@ class TasksController < ApplicationController
       
       def create
         @task = @group.tasks.create(task_params)
-         if @task.save!  
-      
+         if @task.save  
           redirect_to group_task_path(@group, @task)
         else
           render 'new'

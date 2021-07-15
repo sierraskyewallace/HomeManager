@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 2021_07_14_214537) do
     t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["id"], name: "index_groups_on_id", unique: true
     t.index ["invite_token"], name: "index_groups_on_invite_token", unique: true
   end
 

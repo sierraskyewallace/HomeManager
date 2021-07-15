@@ -3,7 +3,7 @@ class TasksController < ApplicationController
   
 
     def index
-        @group = Group.find_by(params[:invite_token])
+        @group = Group.find_by_invite_token(params[:group_invite_token])
         @tasks = @group.tasks
         @user_tasks = @group.tasks.where(user_id: current_user.id)
     end
@@ -14,14 +14,14 @@ class TasksController < ApplicationController
       end
 
       def new 
-        @group = Group.find_by(params[:invite_token])
+        @group = Group.find_by_invite_token(params[:group_invite_token])
         @task = @group.tasks.create
 
         
       end
       
       def create
-        @group = Group.find_by(params[:invite_token])
+        @group = Group.find_by_invite_token(params[:group_invite_token])
         @task = @group.tasks.create(task_params)
          if @task.save!  
       
@@ -32,12 +32,12 @@ class TasksController < ApplicationController
       end
       
       def edit
-        @group = Group.find_by(params[:invite_token])
+        @group = Group.find_by(params[:group_invite_token])
         @task = Task.find_by(params[:id])
       end
 
       def update 
-        @group = Group.find_by(params[:invite_token])
+        @group = Group.find_by(params[:group_invite_token])
         @task = Task.find_by(params[:id])
         if @task.update(task_params)
           redirect_to group_task_path(@group, @task)
@@ -47,7 +47,7 @@ class TasksController < ApplicationController
       end
     
       def destroy
-        @group = Group.find_by(params[:invite_token])
+        @group = Group.find_by(params[:group_invite_token])
         @task = Task.find_by_id(params[:id])
         @task.destroy
         redirect_to group_tasks_path(@group, @task)

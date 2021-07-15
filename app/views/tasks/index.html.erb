@@ -6,7 +6,8 @@
 
 <h5> Your Tasks | <%= current_user.email %> </h5>
 <% @user_tasks.each do |task| %>
-    <%= link_to task.name, group_task_path(@group,task) %><br>
+    <%= link_to task.name, group_task_path(@group,task) %>
+    <%= link_to 'Done', group_task_path(@group,@task), method: :delete %><br>
     
 <% end %><br>
 
@@ -20,6 +21,7 @@
 
 <% @group.tasks.most_recent.each do |t| %>
     <%= link_to t.name, group_task_path(@group,t) %>
+    
     <%= t.user.email %><br>
     <% end %>
 

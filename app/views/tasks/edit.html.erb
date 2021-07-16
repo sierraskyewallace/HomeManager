@@ -4,8 +4,7 @@
   <%= f.text_field :name %>
   
   <%= f.collection_select :user_id, @group.users, :id, :email, :prompt => 'Assign to a User', :required => true %><br>
-  <%= f.label :completed %>
-  <%= f.check_box :completed %>
+
   
 
 
